@@ -1,0 +1,22 @@
+{
+  "name": "carsonkitchen",
+  "version": "1.0.0",
+  "description": "The Restaurant App",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "engines": {
+    "node": "8.11.3"
+  },
+  "author": "shubham kumar singh",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.2",
+    "nodemon": "^1.18.10",
+    "pug": "^2.0.3"
+  }
+}
