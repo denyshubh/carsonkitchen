@@ -1,0 +1,309 @@
+.container-fluid{
+    padding: 0;
+}
+
+
+.section-table{
+    width: 100%;
+    height: 4000px;
+    background-color: #194853;
+    background-image: url("/img/pattern-table.jpg") ;
+    background-repeat: repeat;
+    background-position: top;
+    position: relative;
+    overflow:hidden;
+    z-index: 600;
+}
+
+.table{
+    width: 100%;
+    height: 100%;
+    background-image: url("/img/pattern-table-top.png") ;
+    background-repeat: repeat-x;
+    background-position: top;
+    position: absolute;
+    overflow:hidden;
+}
+
+
+.sec-t {
+    position: absolute;
+}
+
+.basilic{
+    top:0;
+    left:calc(50% - 370px);
+    z-index: 616;
+}
+
+.huile{
+    top:150px;
+    left:calc(50% - 500px);
+    z-index: 616;
+}
+
+.huile img{
+    height: 150px;
+}
+
+.menucarte{
+    position: absolute;
+    top: 40px;
+    right: calc(50% - 545px);
+    z-index: 615;
+}
+
+.plate1{
+    position: absolute;
+    top: 300px;
+    left: calc(50% - 534px);
+    z-index: 620;
+}
+
+.tomates-cerise{
+    position: absolute;
+    top: 791px;
+    left: calc(50% - 550px);
+    z-index: 621;
+    transform: rotate(20deg);
+}
+
+.tomates-cerise img {
+    width: 360px;
+}
+
+.planchecharcuterie{
+    position: absolute;
+    top :747px ;
+    left: calc(50% + 34px);
+    z-index: 621;
+}
+
+.moutarde {
+    position: absolute;
+    top: 1796px;
+    left: calc(50% - 449px);
+    z-index: 622;
+}
+.moutarde img{
+    width: 180px;
+}
+
+.burger{
+    position: absolute;
+    top: 1370px;
+    left: calc(50% - 455px);
+    z-index: 622;
+}
+.burger img{
+    width:90%;
+}
+
+
+.frittes{
+    position: absolute;
+    top: 1488px;
+    left: calc(50% + 250px);
+    z-index: 622;
+}
+.frittes img{
+    width: 520px;
+}
+
+
+.nosplats{
+    position: absolute;
+    top: 1480px;
+    left: calc(50% + 40px);
+}
+
+.soja{
+    position: absolute;
+    top: 2063px;
+    left: calc(50% + 689px);
+    z-index: 622;
+}
+.soja img{
+    width : 200px;
+}
+
+
+.wasabi{
+    position: absolute;
+    top: 1820px;
+    left: calc(50% + 600px);
+    z-index: 622;
+}
+.wasabi img{
+    width : 150px;
+}
+
+.sushis{
+    position: absolute;
+    top: 1850px;
+    left: calc(50% + 90px);
+    z-index: 622;
+}
+
+
+
+.enviedesushi{
+    position: absolute;
+    top: 2061px;
+    left: calc(50% + 40px);
+}
+
+.morceaux-chocolat{
+    position: absolute;
+    top: 2714px;
+    left: calc(50% + 360px);
+    z-index: 625;
+}
+
+.oeuf{
+    position: absolute;
+    top: 2660px;
+    left: calc(50% + 310px);
+    z-index: 626;
+    transform: rotate(-10deg);
+}
+.gourmandise-1{
+    position: absolute;
+    top: 2157px;
+    left: calc(50% - 565px);
+    z-index: 625;
+}
+.gourmandise-2{
+    position: absolute;
+    top: 2513px;
+    left: calc(50% + -558px);
+    z-index: 626;
+}
+
+.gourmandise-3{
+    position: absolute;
+    top: 2306px;
+    left: calc(50% + 40px);
+    z-index: 627;
+}
+
+
+.agrumes {
+    position: absolute;
+    top: 3170px;
+    left: calc(50% - 805px);
+    z-index: 628;
+}
+
+.cocktail{
+    position: absolute;
+    top: 2970px;
+    left: calc(50% - 315px);
+    z-index: 628;
+}
+
+.cuillere {
+    position: absolute;
+    top: 3803px;
+    left: calc(50% - 592px);
+    z-index: 629;
+    transform: rotate(-17deg);
+}
+
+.muffin{
+    position: absolute;
+    top: 3539px;
+    left: calc(50% - 560px);
+    z-index: 629;
+}
+
+.mug-3{
+    position: absolute;
+    top: 3300px;
+    left: calc(50% - 60px);
+    z-index: 630;
+}
+
+
+
+/* MENU SECTION 6 */
+.rollover{
+    position: absolute;
+    border-radius: 50%;
+    /*background-color: rgba(0,255,0,0.5);*/
+
+}
+
+.roundbtn{
+    /*opacity: 0;*/
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,1);
+    color: rgba(255,255,255,1);
+    height: 150px;
+    width: 150px;
+    transform-origin: 50% 50%;
+    transform: scale(0);
+    margin: calc(50% - 75px);
+    text-align: center;
+    line-height: 150px;
+    vertical-align: middle;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    transition: all 500ms ease-in-out;
+}
+
+.plate1 .rollover {
+    top: 5px;
+    left: 62px;
+    width:478px;
+    height: 478px;
+}
+
+.plate1 .rollover:hover .roundbtn{
+    opacity: 1;
+    transform: scale(1);
+}
+
+.planchecharcuterie .rollover {
+    top: 34px;
+    left: 19px;
+    width: 470px;
+    height: 470px;
+}
+.burger .rollover {
+    top: 38px;
+    left: 29px;
+    width: 400px;
+    height: 400px;
+}
+
+.sushis .rollover {
+    top: 51px;
+    left: 139px;
+    width: 400px;
+    height: 400px;
+}
+
+.gourmandise-1 .rollover {
+    top: 7px;
+    left: 28px;
+    width: 300px;
+    height: 300px;
+}
+
+
+.cocktail .rollover {
+    top: 6px;
+    left: 70px;
+    width: 310px;
+    height: 310px;
+}
+
+.mug-3 .rollover {
+    top: 15px;
+    left: 94px;
+    width: 320px;
+    height: 320px;
+}
