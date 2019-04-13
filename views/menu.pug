@@ -9,7 +9,7 @@ div.container-fluid
 				img(src="/img/menu.png", alt="Menu")
 			div.plate1
 				img(src="/img/salade-lentilles.png", alt="Salade Lentilles")
-				.rollover
+				.rollover(data-id="56")
 					.roundbtn
 						span Discover
 			div.tomates-cerise
@@ -50,3 +50,30 @@ div.container-fluid
 				img(src="/img/muffin-4.png")
 			div.mug-3
 				img(src="/img/mug-3.png")
+
+
+#menu_cat_modal
+	.section-btn.section-left-btn(@click='onLeftClick()')
+		i.fa.fa-less-than.fa-3x.text-white
+	.section-btn.section-right-btn(@click='onRightClick()')
+		i.fa.fa-greater-than.fa-3x.text-white
+	.section-menc.container-fluid.pt-1.mx-auto
+		div#category-box
+			div(v-for="category in categories")
+				.container-fluid
+					.container-fluid(style="height:100%;")
+						span.section-close-btn.float-right.p-2.mr-3(@click='onCloseClick')
+							i.fa.fa-times.fa-2x
+						h4.category-title.text-center.p-1 {{ category.title }}
+						hr.my-1
+						.container-fluid.m-0.row(style="height:100%;")
+							.col-md-4.d-none.d-md-block
+								img.img-fluid(src="/img/salade-lentilles.png")
+							.col(style="height:100%;")
+								ul.menu-list.pt-2(style="height:90%;")
+									div(v-for="item in menu")
+										span.float-right {{item.price}}
+										h5.m-0.mt-2 {{item.title}}
+										span {{item.menu_desc}}
+										br
+

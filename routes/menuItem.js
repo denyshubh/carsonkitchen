@@ -10,8 +10,7 @@ router.post('/', async (req,res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
 
-    let menu = new Menu({ 
-
+    let menu = new Menu({
         title:req.body.title,
         menu_desc:req.body.menu_desc,
         offer_percentage:req.body.offer_percentage,

@@ -52,10 +52,13 @@ router.delete('/:id', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   const category = await Category.findById(req.params.id);
-
+  Category.find("")
   if (!category) return res.status(404).send('The category with thegiven ID was not found.');
 
   res.send(category);
 });
 
-module.exports = router; 
+module.exports = router;
+
+
+
