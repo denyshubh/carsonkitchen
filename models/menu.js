@@ -17,9 +17,10 @@ const Menu =mongoose.model('Menu', new mongoose.Schema({
       type: Number
     },
     category: {
-      type: String,
-      required:true
+      type: mongoose.Schema.Types.ObjectId,  
+      ref: 'Category'
     },
+    categoryId: String,
     extra_ingrediants: {
       type: [ {
           ingrediant_name: String,
@@ -32,24 +33,25 @@ const Menu =mongoose.model('Menu', new mongoose.Schema({
     },
     img_url: {
         type: String,
-        required:true
     }
   }));
+
 
   function validateMenu(menu) {
     const schema = {
 
       title: Joi.string().max(200).required(),
       menu_desc:Joi.string().max(2000).min(10).required(),
-      img_url:Joi.string().required(),
-      category:Joi.string().required(),
+      img_url:Joi.string(),
+      categoryId: Joi.string(),
+      category:Joi.required(),
       offer_percentage:Joi.number(),
       extra_ingrediants:Joi.array(),
       price:Joi.number().required()
     };
   
     return Joi.validate(menu, schema);
-  }
+  };
   
 
 module.exports.Menu = Menu;

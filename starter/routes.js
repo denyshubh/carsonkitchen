@@ -4,19 +4,18 @@ const category = require('../routes/categories');
 const users = require('../routes/users');
 const auth = require('../routes/auth');
 const index = require('../routes/index');
-const bodyParser = require('body-parser');
+const reservation = require('../routes/reservations');
 const error = require('../middleware/error');
+const cookieParser = require('cookie-parser');
+
 
 module.exports = function(app) {
-  app.use(express.json());
-  app.use(bodyParser.urlencoded({
-    extended: false
-  }));
-
-  app.use('/api/menu', menuItem);
-  app.use('/api/category',category);
+  app.use(cookieParser());
+  app.use('/menu', menuItem);
+  app.use('/category',category);
   app.use('/api/auth',auth);
   app.use('/api/users',users);
   app.use('/',index);
+  app.use('/reservation',reservation);
   app.use(error);
 };
