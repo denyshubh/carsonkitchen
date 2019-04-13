@@ -1,55 +1,79 @@
-extends layout
+div.container-fluid
+	div.section-table
+		div.table
+			div.sec-t.basilic
+				img(src="/img/basilic.png", alt="Basilic")
+			div.sec-t.huile
+				img(src="/img/huile.png", alt="Huile")
+			div.menucarte
+				img(src="/img/menu.png", alt="Menu")
+			div.plate1
+				img(src="/img/salade-lentilles.png", alt="Salade Lentilles")
+				.rollover(data-id="56")
+					.roundbtn
+						span Discover
+			div.tomates-cerise
+				img(src="/img/tomates-cerise.png", alt="Menu")
+			div.planchecharcuterie
+				img(src="/img/planche-charcuteries.png")
+			div.moutarde
+				img(src="/img/moutarde.png")
+			div.burger
+				img(src="/img/burger-boeuf-seul.png")
+			div.frittes
+				img(src="/img/panier-frites.png")
+			div.soja
+				img(src="/img/sauce-soja.png")
+			div.wasabi
+				img(src="/img/wasabi.png")
+			div.sushis
+				img(src="/img/sushis.png")
+			div.frittes
+				img(src="/img/panier-frites.png")
+			div.morceaux-chocolat
+				img(src="/img/copeaux-chocolat.png")
+			div.oeuf
+				img(src="/img/oeuf.png")
+			div.gourmandise-1
+				img(src="/img/gourmandise-1.png")
+			div.gourmandise-2
+				img(src="/img/gourmandise-2.png")
+			div.gourmandise-3
+				img(src="/img/gourmandise-3.png")
+			div.agrumes
+				img(src="/img/agrumes-2.png")
+			div.cocktail
+				img(src="/img/cocktail.png")
+			div.cuillere
+				img(src="/img/cuillere.png")
+			div.muffin
+				img(src="/img/muffin-4.png")
+			div.mug-3
+				img(src="/img/mug-3.png")
 
-block content
-	div.container-fluid
-		div.section-table
-			div.table
-				div.sec-t.basilic
-					img(src="/img/basilic.png", alt="Basilic")
-				div.sec-t.huile
-					img(src="/img/huile.png", alt="Huile")
-				div.menucarte
-					img(src="/img/menu.png", alt="Menu")
-				div.plate1
-					img(src="/img/salade-lentilles.png", alt="Salade Lentilles")
-					.rollover
-						.roundbtn
-							span Discover
-				div.tomates-cerise
-					img(src="/img/tomates-cerise.png", alt="Menu")
-				div.planchecharcuterie
-					img(src="/img/planche-charcuteries.png")
-				div.moutarde
-					img(src="/img/moutarde.png")
-				div.burger
-					img(src="/img/burger-boeuf-seul.png")
-				div.frittes
-					img(src="/img/panier-frites.png")
-				div.soja
-					img(src="/img/sauce-soja.png")
-				div.wasabi
-					img(src="/img/wasabi.png")
-				div.sushis
-					img(src="/img/sushis.png")
-				div.frittes
-					img(src="/img/panier-frites.png")
-				div.morceaux-chocolat
-					img(src="/img/copeaux-chocolat.png")
-				div.oeuf
-					img(src="/img/oeuf.png")
-				div.gourmandise-1
-					img(src="/img/gourmandise-1.png")
-				div.gourmandise-2
-					img(src="/img/gourmandise-2.png")
-				div.gourmandise-3
-					img(src="/img/gourmandise-3.png")
-				div.agrumes
-					img(src="/img/agrumes-2.png")
-				div.cocktail
-					img(src="/img/cocktail.png")
-				div.cuillere
-					img(src="/img/cuillere.png")
-				div.muffin
-					img(src="/img/muffin-4.png")
-				div.mug-3
-					img(src="/img/mug-3.png")
+
+#menu_cat_modal
+	.section-btn.section-left-btn(@click='onLeftClick()')
+		i.fa.fa-less-than.fa-3x.text-white
+	.section-btn.section-right-btn(@click='onRightClick()')
+		i.fa.fa-greater-than.fa-3x.text-white
+	.section-menc.container-fluid.pt-1.mx-auto
+		div#category-box
+			div(v-for="category in categories")
+				.container-fluid
+					.container-fluid(style="height:100%;")
+						span.section-close-btn.float-right.p-2.mr-3(@click='onCloseClick')
+							i.fa.fa-times.fa-2x
+						h4.category-title.text-center.p-1 {{ category.title }}
+						hr.my-1
+						.container-fluid.m-0.row(style="height:100%;")
+							.col-md-4.d-none.d-md-block
+								img.img-fluid(src="/img/salade-lentilles.png")
+							.col(style="height:100%;")
+								ul.menu-list.pt-2(style="height:90%;")
+									div(v-for="item in menu")
+										span.float-right {{item.price}}
+										h5.m-0.mt-2 {{item.title}}
+										span {{item.menu_desc}}
+										br
+
