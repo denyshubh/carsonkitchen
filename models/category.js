@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
-const Category =mongoose.model('Category', new mongoose.Schema({
+
+const Category =  mongoose.model('Category', new mongoose.Schema({
 
     title: {
       type: String,
@@ -17,21 +18,32 @@ const Category =mongoose.model('Category', new mongoose.Schema({
 
     img: {
         type: String,
-        required: true
+       
     }
+
   }));
+
+  // Get Categories
+module.exports.getCategories = function(callback, limit){
+  Category.find(callback).limit(limit);
+};
+
+// Get Single Category By Id
+module.exports.getCategoryById = function(id, callback){
+  Category.findById(id, callback);
+};
+  
 
   function validateCategory(category) {
     const schema = {
         
       title: Joi.string().max(200).required(),
       desc:  Joi.string().max(2000).min(10).required(),
-      img:   Joi.string().required()
+      img:   Joi.string()
     };
   
     return Joi.validate(category, schema);
   }
   
-
 module.exports.Category = Category;
 module.exports.validate = validateCategory;

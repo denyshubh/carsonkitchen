@@ -1,61 +1,50 @@
-const upload    = require('./upload');
+
 const express = require('express');
-const { Category, validate } = require('../models/category'); 
+const { Category } = require('../models/category'); 
 const router =  express.Router();
+const jwt = require('jsonwebtoken');
+const { Menu } = require('../models/menu'); 
 
-router.post('/', async (req,res) => {
-
-  const { error } = validate(req.body); 
-  if (error) return res.status(400).send(error.details[0].message);
-
-
-    let category = new Category({ 
-        title:req.body.title,
-        desc:req.body.desc,
-        img:req.body.img
-      });
-
-     category = await category.save();
-
-      res.send(category);
-
-});
 
 router.get('/', async (req, res) => {
-  const category = await Category.find().sort('title');
-  res.send(category);
+  const category = await Category.find();
+  if(IsAdmin(req)){
+      res.render('category', {category});
+  }
+  else
+       res.render('login');
+     
 });
 
-router.put('/:id', async (req, res) => {
-  const { error } = validate(req.body); 
-  if (error) return res.status(400).send(error.details[0].message);
-
-  const category = await Category.findByIdAndUpdate(req.params.id,
-    { 
-      title:req.body.title,
-      desc:req.body.desc,
-      img:req.body.img
-    }, { new: true });
-
-  if (!category) return res.status(404).send('The category with the given ID was not found.');
+router.get('/all', async (req, res) => {
+  const categories = await Category.find();
+  let x = [];
   
-  res.send(category);
+  for(var i =0; i<categories.length; i++)
+  { 
+    x.push(await Menu.find({categoryId:categories[i]._id}).populate('category'));
+  }
+  res.send(x);
 });
 
-router.delete('/:id', async (req, res) => {
-  const category = await Category.findByIdndRemove(req.params.id);
-
-  if (!category) return res.status(404).send('The category with thegiven ID was not found.');
-
-  res.send(category);
-});
 
 router.get('/:id', async (req, res) => {
   const category = await Category.findById(req.params.id);
-
-  if (!category) return res.status(404).send('The category with thegiven ID was not found.');
-
-  res.send(category);
+  if(IsAdmin(req))
+  {    if (!category) return res.status(404).send('The category with thegiven ID was not found.');
+      res.render('edit-category', {category});
+  }
 });
+
+
+function IsAdmin(req)
+{
+  const { token } = req.cookies;
+  var decoded = jwt.decode(token, {complete: true});
+  var admin;
+  if(token!=undefined)
+       admin = decoded.payload.isAdmin;
+  return admin;
+}
 
 module.exports = router; 
