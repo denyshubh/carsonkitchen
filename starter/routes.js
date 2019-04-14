@@ -11,8 +11,8 @@ const cookieParser = require('cookie-parser');
 
 module.exports = function(app) {
   app.use(cookieParser());
-  app.use('/menu', menuItem);
-  app.use('/category',category);
+  app.use('/api/menu', menuItem);
+  app.use('/api/category',category);
   app.use('/api/auth',auth);
   app.use('/api/users',users);
   app.use('/',index);

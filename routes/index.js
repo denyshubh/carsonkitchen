@@ -6,11 +6,15 @@ const Category = require('../models/category');
 
 
 router.get('/', (req,res) => {
-    
-    if(IsAdmin(req))
-         res.render('index');
-    else
-        res.render('login');
+    res.render('index');
+});
+
+router.get('/menu', (req,res) => {
+    res.render('menu');
+});
+
+router.get('/reservation', (req,res) => {
+    res.render('reservation');
 });
 
 router.get('/login', (req,res) => {
@@ -18,13 +22,10 @@ router.get('/login', (req,res) => {
 });
 
 router.get('/logout', (req,res) => {
-   
     if(IsAdmin(req)){
         res.clearCookie("token");
     }
-
-        res.render('login');   
-   
+    res.render('login');
 });
 
 router.get('/add/menu', (req,res) => {
