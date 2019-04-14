@@ -5,6 +5,7 @@ const {User} = require('../models/user');
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
 
 router.post('/', async (req, res) => {
   const { error } = validate(req.body); 
@@ -17,7 +18,18 @@ router.post('/', async (req, res) => {
   if (!validPassword) return res.status(400).send('Invalid email or password.');
 
   const token = user.generateAuthToken();
-  res.send(token);
+
+  res.clearCookie('token');
+
+  var decoded = jwt.decode(token, {complete: true});
+  var admin = decoded.payload.isAdmin;
+  if(admin)       
+      {res.cookie('token', token, { maxAge: 2628000000 })  
+        .redirect('/');  // maxAge is set to 1 months
+      }
+  else
+      res.cookie('token', token, { maxAge: 2628000000 })
+          .send('What EVER YOU WANT');
 });
 
 function validate(req) {
@@ -28,5 +40,6 @@ function validate(req) {
 
   return Joi.validate(req, schema);
 }
+
 
 module.exports = router; 
