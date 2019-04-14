@@ -45,6 +45,21 @@ if(document.getElementById("menu_cat_modal")) {
                 self.categories = res;
             });
 
+            window.onkeypress = function(e){
+                eb = e.key;
+                console.log(eb);
+            }
+
+            document.onkeydown = function(e) {
+                switch (e.keyCode) {
+                    case 37:
+                        cat_box.onLeftClick();
+                        break;
+                    case 39:
+                        cat_box.onRightClick();
+                        break;
+                }
+            };
 
                 // let event = window.event ? window.event : e;
                 // if(event.keyCode == 37){
@@ -99,7 +114,6 @@ if(document.getElementById("menu_cat_modal")) {
         });
     });
 
-
     $('.menu_cat_trigger').on('click', function () {
         cat_box.boxToggle();
     });
@@ -111,49 +125,51 @@ if(document.getElementById("menu_cat_modal")) {
     });
 }
 
-const menu_page = new Vue({
-    el: "#menu-page",
-    data: {
-        categories: null,
-        i : 0,
-    },
-    mounted: function () {
-        let self = this;
-        $.getJSON("/api/category/all", [], function (res) {
-            self.categories = res;
-        });
-    },
-    methods: {
-        onLeftClick: function () {
-            this.i = (this.i === 0)? this.categories.length -1 : this.i-1;
+if(document.getElementById("menu-page")) {
+    const menu_page = new Vue({
+        el: "#menu-page",
+        data: {
+            categories: null,
+            i: 0,
         },
-        onRightClick: function () {
-            this.i = (this.i === this.categories.length-1) ? 0 : this.i+1;
+        mounted: function () {
+            let self = this;
+            $.getJSON("/api/category/all", [], function (res) {
+                self.categories = res;
+            });
         },
-        onCloseClick: function (e) {
-            console.log("on close click");
-            $($(e.target).closest('.section-close-btn')).toggleClass("rotate");
-            setTimeout(function () {
-                this.boxToggle();
-            }, 1100);
-        },
-        boxToggle:function(){
-            $("#menu_cat_modal").toggleClass("show");
-            $(".section-menc").toggleClass("show");
+        methods: {
+            onLeftClick: function () {
+                this.i = (this.i === 0) ? this.categories.length - 1 : this.i - 1;
+            },
+            onRightClick: function () {
+                this.i = (this.i === this.categories.length - 1) ? 0 : this.i + 1;
+            },
+            onCloseClick: function (e) {
+                console.log("on close click");
+                $($(e.target).closest('.section-close-btn')).toggleClass("rotate");
+                setTimeout(function () {
+                    this.boxToggle();
+                }, 1100);
+            },
+            boxToggle: function () {
+                $("#menu_cat_modal").toggleClass("show");
+                $(".section-menc").toggleClass("show");
 
-            if(autoRotate) {
-                if (this.autoRotateH) {
-                    clearInterval(autoRotateH);
-                    this.autoRotateH = 0;
-                } else {
-                    this.autoRotateH = setInterval(function () {
-                        this.onRightClick();
-                    }, 5000)
+                if (autoRotate) {
+                    if (this.autoRotateH) {
+                        clearInterval(autoRotateH);
+                        this.autoRotateH = 0;
+                    } else {
+                        this.autoRotateH = setInterval(function () {
+                            this.onRightClick();
+                        }, 5000)
+                    }
                 }
             }
         }
-    }
-});
+    });
+}
 
 const res = new Vue({
 
@@ -290,7 +306,7 @@ const sec_review = new Vue({
     methods: {
         getImg : function (img){
             return img;
-        }
+        },
         onLeftClick: function () {
             console.log("left clicked");
         },
