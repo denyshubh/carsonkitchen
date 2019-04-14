@@ -99,3 +99,36 @@ function toggleMenuCatModalSection() {
     $("#menu_cat_modal").toggleClass("show");
     $(".section-menc").toggleClass("show");
 }
+
+
+const sec_review = new Vue({
+    el: "#reviews",
+    data: {
+        reviews : null,
+        menu: null
+    },
+    mounted: function () {
+        let self = this;
+        $.getJSON("/api/category/", [], function (res) {
+            self.reviews = res;
+        });
+    },
+    methods: {
+        getImg : function (img){
+            return img;
+        }
+        onLeftClick: function () {
+            console.log("left clicked");
+        },
+        onRightClick: function () {
+            console.log("right clicked");
+        },
+        onCloseClick: function (e) {
+            console.log("on close click");
+            $($(e.target).closest('.section-close-btn')).toggleClass("rotate");
+            setTimeout(function () {
+                toggleMenuCatModalSection();
+            }, 1100);
+        }
+    }
+});
