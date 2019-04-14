@@ -1,0 +1,198 @@
+[
+    {
+        "title": "B.L.T.",
+        "menu_desc": "bacon, leek, truffle béchamel",
+        "offer_percentage": 0,
+        "category": "FLATBREADS",
+        "extra_ingrediants": [],
+        "price": 55,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "BACON JAM",
+        "menu_desc": "baked brie, toasted baguette",
+        "offer_percentage": 0,
+        "category": "SOCIAL PLATES",
+        "extra_ingrediants": [],
+        "price": 120,
+        "img_url": "abc.jpg"    }
+,
+    {
+        "title": "BLACK RICE & OXTAIL RISOTTO",
+        "menu_desc": "parmesan cream",
+        "offer_percentage": 0,
+        "category": "FARM & GARDEN",
+        "extra_ingrediants": [],
+        "price": 55,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "BOURBON FUDGE BROWNIE",
+        "menu_desc": "brown butter bacon ice cream",
+        "offer_percentage": 0,
+        "category": "SOMETHING SWEET",
+        "extra_ingrediants": [],
+        "price": 55,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "BRUSSELS SPROUT CAESAR",
+        "menu_desc": "black kale, bacon lardon",
+        "offer_percentage": 0,
+        "category": "FARM & GARDEN",
+        "extra_ingrediants": [],
+        "price": 55,
+        "img_url": "abc.jpg"}
+,
+    {
+        "title": "BUTTER BURGER",
+        "menu_desc": "boursin, cheddar, lettuce, tomato",
+        "offer_percentage": 0,
+        "category": "BETWEEN BREAD",
+        "extra_ingrediants": [],
+        "price": 40,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "CHICKEN LIVER MOUSSE",
+        "menu_desc": "cherry fernet compote",
+        "offer_percentage": 0,
+        "category": "SOCIAL PLATES",
+        "extra_ingrediants": [],
+        "price": 150,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "CHICKEN THIGHS",
+        "menu_desc": "tagine spice, apricot relish",
+        "offer_percentage": 0,
+        "category": "MEAT & FISH",
+        "extra_ingrediants": [],
+        "price": 55,
+        "img_url": "abc.jpg"}
+,
+    {
+        "title": "COCOA-ESPRESSO NY STRIP",
+        "menu_desc": "red wine demi",
+        "offer_percentage": 0,
+        "category": "MEAT & FISH",
+        "extra_ingrediants": [],
+        "price": 55,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "CRISPY CHICKEN SKINS",
+        "menu_desc": "smoked honey",
+        "offer_percentage": 0,
+        "category": "SOCIAL PLATES",
+        "extra_ingrediants": [],
+        "price": 200,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "DEVIL's EGGS",
+        "menu_desc": "crispy pancetta, caviar",
+        "offer_percentage": 0,
+        "category": "SOCIAL PLATES",
+        "extra_ingrediants": [],
+        "price": 120,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "GLAZED DONUT BREAD PUDDING",
+        "menu_desc": "three rum caramel, vanilla creme anglaise",
+        "offer_percentage": 0,
+        "category": "SOMETHING SWEET",
+        "extra_ingrediants": [],
+        "price": 55,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "GYRO TACOS",
+        "menu_desc": "lamb, tzatziki, feta, tomato",
+        "offer_percentage": 0,
+        "category": "SOCIAL PLATES",
+        "extra_ingrediants": [],
+        "price": 180,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "JERK TURKEY BURGER",
+        "menu_desc": "mango chutney slaw",
+        "offer_percentage": 0,
+        "category": "BETWEEN BREAD",
+        "extra_ingrediants": [],
+        "price": 55,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "PEANUT BUTTER BANANA CHEESECAKE",
+        "menu_desc": "strawberry créme de cacao",
+        "offer_percentage": 0,
+        "category": "SOMETHING SWEET",
+        "extra_ingrediants": [],
+        "price": 55,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "SEA BASS",
+        "menu_desc": "cauliflower tabbouleh, chili oil",
+        "offer_percentage": 0,
+        "category": "MEAT & FISH",
+        "extra_ingrediants": [],
+        "price": 55,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "SECRET SUNDAY CICKEN",
+        "menu_desc": "spicy pickle aioli",
+        "offer_percentage": 0,
+        "category": "BETWEEN BREAD",
+        "extra_ingrediants": [],
+        "price": 140,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "TEMPURA GREEN BEANS",
+        "menu_desc": "pepper jelly cream cheese",
+        "offer_percentage": 0,
+        "category": "SOCIAL PLATES",
+        "extra_ingrediants": [],
+        "price": 80,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "VEAL MEATBALLS",
+        "menu_desc": "sherry foie gras cream",
+        "offer_percentage": 0,
+        "category": "SOCIAL PLATES",
+        "extra_ingrediants": [],
+        "price": 180,
+        "img_url": "abc.jpg"
+    }
+,
+    {
+        "title": "WILD MUSHROOM",
+        "menu_desc": "tikka masala, smoked mozzarella",
+        "offer_percentage": 0,
+        "category": "FLATBREADS",
+        "extra_ingrediants": [],
+        "price": 55,
+        "img_url": "abc.jpg"
+    }
+]

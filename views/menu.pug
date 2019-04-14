@@ -1,79 +1,19 @@
-div.container-fluid
-	div.section-table
-		div.table
-			div.sec-t.basilic
-				img(src="/img/basilic.png", alt="Basilic")
-			div.sec-t.huile
-				img(src="/img/huile.png", alt="Huile")
-			div.menucarte
-				img(src="/img/menu.png", alt="Menu")
-			div.plate1
-				img(src="/img/salade-lentilles.png", alt="Salade Lentilles")
-				.rollover(data-id="56")
-					.roundbtn
-						span Discover
-			div.tomates-cerise
-				img(src="/img/tomates-cerise.png", alt="Menu")
-			div.planchecharcuterie
-				img(src="/img/planche-charcuteries.png")
-			div.moutarde
-				img(src="/img/moutarde.png")
-			div.burger
-				img(src="/img/burger-boeuf-seul.png")
-			div.frittes
-				img(src="/img/panier-frites.png")
-			div.soja
-				img(src="/img/sauce-soja.png")
-			div.wasabi
-				img(src="/img/wasabi.png")
-			div.sushis
-				img(src="/img/sushis.png")
-			div.frittes
-				img(src="/img/panier-frites.png")
-			div.morceaux-chocolat
-				img(src="/img/copeaux-chocolat.png")
-			div.oeuf
-				img(src="/img/oeuf.png")
-			div.gourmandise-1
-				img(src="/img/gourmandise-1.png")
-			div.gourmandise-2
-				img(src="/img/gourmandise-2.png")
-			div.gourmandise-3
-				img(src="/img/gourmandise-3.png")
-			div.agrumes
-				img(src="/img/agrumes-2.png")
-			div.cocktail
-				img(src="/img/cocktail.png")
-			div.cuillere
-				img(src="/img/cuillere.png")
-			div.muffin
-				img(src="/img/muffin-4.png")
-			div.mug-3
-				img(src="/img/mug-3.png")
+extends layout
 
-
-#menu_cat_modal
-	.section-btn.section-left-btn(@click='onLeftClick()')
-		img(src="/img/arrow-left.svg")
-	.section-btn.section-right-btn.pl-2(@click='onRightClick()')
-		img(src="/img/arrow-right.svg")
-	.section-menc.container-fluid.mx-auto
-		div#category-box
-			div.category-box-inner
-					div.float-left.category-block(:class="{'show':(categories[i]._id==category._id)}" v-for="category in categories")
-						.container-fluid
-							.container-fluid.mt2-0.mx-0.row(style="height:100%;")
-								.col-md-4.px-0.d-none.d-md-block.bg-white
-									img.img-fluid(src="/img/salade-lentilles.png")
-								.col.mr-0.px-0.sec-menu(style="height:100%;")
-									.container-fluid.mt-2.mx-0(style="height:100%;")
-										span.section-close-btn.float-right.p-1.mr-3(@click='onCloseClick')
-											i.fa.fa-times.fa-2x
-										h4.category-title.text-center.p-1 {{ category.title }}
-										hr.my-1
-										div.menu-list.pt-2.px-3(style="height:90%;")
-											div.menu-item(v-for="item in category.menu")
-												span.float-right &dollar;{{item.price}}
-												h5.m-0.mt-2 {{item.title}}
-												span {{item.menu_desc}}
-												br
+block content
+	#menu-page.container-fluid.mt-5.pt-3
+		.row
+			.menu-page-inner
+				.cat-block.float-left(:class="{'show':(categories[i]._id==category._id)}" v-for="category in categories")
+					.container-fluid
+						.container-fluid.mt2-0.mx-0.row(style="height:100%;")
+							.col.mr-0.px-0.sec-menu(style="height:100%;")
+								.container-fluid.mt-2.mx-0(style="height:100%;")
+									h4.category-title.text-center.p-1 {{ category.title }}
+									hr.my-1
+									div.menu-list.pt-2.px-3(style="height:90%;")
+										div.menu-item(v-for="item in category.menu")
+											span.float-right &dollar;{{item.price}}
+											h5.m-0.mt-2 {{item.title}}
+											span {{item.menu_desc}}
+											br
