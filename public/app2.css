@@ -384,9 +384,9 @@ body.scroll-start.half .navbar-top.fixed{
 
 .section-btn{
     position: absolute;
+    padding-top:40%;
     top:0%;
     bottom:0%;
-    width:10%;
     border-width: 0px;
     -webkit-box-shadow: 0px 0px;
     box-shadow: 0px 0px;
@@ -400,7 +400,7 @@ body.scroll-start.half .navbar-top.fixed{
 }
 
 .section-left-btn{
-    left:0;
+    left:5%;
 }
 
 .section-left-btn .fa{
@@ -410,7 +410,7 @@ body.scroll-start.half .navbar-top.fixed{
 }
 
 .section-right-btn{
-    right:0;
+    right:5%;
 }
 
 .section-right-btn .fa{
@@ -441,11 +441,47 @@ body.scroll-start.half .navbar-top.fixed{
     overflow-x: auto;
 }
 
+.category-box-inner{
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.category-block {
+    width:0%;
+    height: 100%;
+    opacity: 0;
+    display: inline-block;
+    transform-origin: left;
+    transition: all 1s ease-in-out;
+}
+
+.category-block.show {
+    width:100%;
+    opacity: 1;
+}
+
 #category-box > div{
     /*width:90%;*/
     /*margin-left: auto;*/
 }
+
 .menu-list{
     height: 100%;
     overflow-y: auto;
+}
+
+.sec-menu{
+    background-color: #ffda81;
+    color: #454c24;
+}
+.menu-item{
+
+}
+
+.menu-item:hover{
+    color: rgba(57, 34, 31, 0.8);
+    border-bottom: 2px solid #68290196;
+    box-shadow: -1px 2px 4px 1px #68290196;
+    padding: 2px 10px 10px;
 }

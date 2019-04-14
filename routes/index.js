@@ -7,10 +7,10 @@ const Category = require('../models/category');
 
 router.get('/', (req,res) => {
     
-    if(IsAdmin(req))
+    // if(IsAdmin(req))
          res.render('index');
-    else
-        res.render('login');
+    // else
+        // res.render('login');
 });
 
 router.get('/login', (req,res) => {

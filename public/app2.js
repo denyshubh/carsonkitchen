@@ -29,28 +29,28 @@ $(function () {
     }
 });
 
-
 const cat_box = new Vue({
     el: "#menu_cat_modal",
     data: {
         categories: null,
-        menu: null
+        i : 0,
+        autoRotate : false,
+        autoRotateH:0
     },
     mounted: function () {
         let self = this;
-        $.getJSON("/api/category/", [], function (res) {
+        // $.getJSON("/category", [], function (res) {self.categories = res;});
+        $.getJSON("/category/all", [], function (res) {
             self.categories = res;
         });
-        $.getJSON("/api/menu/", [], function (res) {
-            self.menu = res;
-        })
+        // $.getJSON("/menu/", [], function (res) {self.menu = res;})
     },
     methods: {
         onLeftClick: function () {
-            console.log("left clicked");
+            this.i = (this.i === 0)? this.categories.length -1 : this.i-1;
         },
         onRightClick: function () {
-            console.log("right clicked");
+            this.i = (this.i === this.categories.length-1) ? 0 : this.i+1;
         },
         onCloseClick: function (e) {
             console.log("on close click");
@@ -58,44 +58,42 @@ const cat_box = new Vue({
             setTimeout(function () {
                 toggleMenuCatModalSection();
             }, 1100);
+        },
+        boxToggle:function(){
+            $("#menu_cat_modal").toggleClass("show");
+            $(".section-menc").toggleClass("show");
+
+            if(autoRotate) {
+                if (this.autoRotateH) {
+                    clearInterval(autoRotateH);
+                    this.autoRotateH = 0;
+                } else {
+                    this.autoRotateH = setInterval(function () {
+                        this.onRightClick();
+                    }, 5000)
+                }
+            }
         }
     }
 });
 
 $(function () {
     $(".section-table .rollover").click(function (e) {
-
         let data_id = $(this).closest('.section-table .rollover').attr('data-id');
-        toggleMenuCatModalSection();
-/*
-        $.getJSON("/api/category/", {}, function (res) {
-            console.log(res);
-
-            $("#category-box .category-title").get(0).innerText = "Category Id : " + data_id;
-
-            let menuList = $("#category-box .menu-list").get(0);
-            res.forEach(function (item, index) {
-                menuList.innerHTML +=
-                `<h5 class=" m-0 mt-2">${item.title}</h5>${item.desc}<br>`;
-            });
-        });*/
+        cat_box.boxToggle();
     });
 });
 
 
 $('.menu_cat_trigger').on('click', function () {
     // this.event.
-    toggleMenuCatModalSection();
+    cat_box.boxToggle();
 });
 
 $("#menu_cat_modal").on('click', function (e) {
     console.log($(e.target).get(0).id);
     if ($(e.target).get(0).id == "menu_cat_modal") {
-        toggleMenuCatModalSection();
+        cat_box.boxToggle();
     }
 });
 
-function toggleMenuCatModalSection() {
-    $("#menu_cat_modal").toggleClass("show");
-    $(".section-menc").toggleClass("show");
-}
