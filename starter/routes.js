@@ -1,6 +1,7 @@
 const express = require('express');
 const menuItem = require('../routes/menuItem');
 const category = require('../routes/categories');
+const reviews = require('../routes/reviews');
 const users = require('../routes/users');
 const auth = require('../routes/auth');
 const index = require('../routes/index');
