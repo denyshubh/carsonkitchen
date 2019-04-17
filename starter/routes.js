@@ -9,13 +9,13 @@ const error = require('../middleware/error');
 const cookieParser = require('cookie-parser');
 
 
-module.exports = function(app) {
-  app.use(cookieParser());
-  app.use('/api/menu', menuItem);
-  app.use('/api/category',category);
-  app.use('/api/auth',auth);
-  app.use('/api/users',users);
-  app.use('/',index);
-  app.use('/reservation',reservation);
-  app.use(error);
+module.exports = function (app) {
+    app.use(cookieParser());
+    app.use('/api/menu', menuItem);
+    app.use('/api/category', category);
+    app.use('/api/auth', auth);
+    app.use('/api/users', users);
+    app.use('/api/reservation', reservation);
+    app.use('/', index);
+    app.use(error);
 };

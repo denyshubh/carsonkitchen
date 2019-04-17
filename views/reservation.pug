@@ -12,7 +12,46 @@ block content
 		section
 			.container-fluid
 				.container#sec-reservation.p-3
-					.row
-						.col-md-6
-							.container
-								| Select Date
+					.container-fluid.row
+						.col-md-6.mx-0
+							.form-group
+								label(for="date")
+									h5 Select Date
+									input.form-control.ml-2(type="date" id="date" v-model="bDate")
+									span.d-block.ml-2.text-danger(v-if="bErrMsg.length") {{ bErrMsg }}
+							.container-fluid(v-if="slots.length")
+								.tslotwrapper
+									h5.mb-0 Reservation Hour
+									.tslot.px-2.py-1.my-2.mx-1.d-inline-block(@click="slotClicked(d)" v-for="d in slots" :class="{'full disabled': d.full,'selected' : d.selected }" :disabled="d.full")
+										h4 {{ d.label }}
+							.container-fluid.mt-3(v-if="slots.length")
+								h5.mb-2.mr-3.d-inline-block Reservation Duration
+								.form-horizontal.form-inline
+									.row.container-fluid
+										.col-6.hours
+											.input-group
+												input.form-control(type="number" min="1" :max="maxHours" v-model="rH")
+												.input-group-append
+													.input-group-text Hours
+										.col-6.Mins(v-if="slot_rate <= 30")
+											.input-group
+												input.form-control(type="number" min="0" max="60" :step="getMinutesStep()" v-if="slot_rate <= 30" v-model.lazy="rM" )
+												.input-group-append
+													.input-group-text Mins
+							.container-fluid(v-if="slots.length")
+								h5.mb-2 No. of Guests
+								input.form-control.mx-2(type="number" min="1" :max="config.maxGuestLimit" v-model="bGuests")
+								br
+								span.text-danger(v-if="(bGuests > config.maxGuestLimit-2)") Can't book for more than {{ config.maxGuestLimit }} Guest. Please contact Resaturant by
+						.col-md-6.mx-0
+							.container-fluid
+								.h2 Some Cool Stuff to say here
+								ul
+									li Some fun stuff
+									li Some fun stuff 2
+									li Some fun stuff 3
+
+
+	//.dates
+	//	.dateBlock.p-3.m-2.d-inline-block(v-for="d in dates")
+	//		h3(@click="dateClicked(d)") {{ d }}

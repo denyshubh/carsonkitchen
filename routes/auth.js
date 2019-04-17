@@ -23,10 +23,9 @@ router.post('/', async (req, res) => {
 
   var decoded = jwt.decode(token, {complete: true});
   var admin = decoded.payload.isAdmin;
-  if(admin)
-      {res.cookie('token', token, { maxAge: 2628000000 })
+  if(admin) {res.cookie('token', token, { maxAge: 2628000000 })
         .redirect('/');  // maxAge is set to 1 months
-      }
+  }
   else
       res.cookie('token', token, { maxAge: 2628000000 })
           .send('What EVER YOU WANT');

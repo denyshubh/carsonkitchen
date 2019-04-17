@@ -25,14 +25,21 @@ router.post('/', async (req,res) => {
   
 });
 
-router.get('/:id', async (req,res) => {
+router.get('/d', async (req,res)=>{
+    
+
+    console.log(req.query);
 
     const reservation = await Reservation
-                            .findById(req.params.id);
+        .find({booking_date : req.query.date})
+        .sort('time');
 
+    console.log(reservation);
+    res.json(reservation);
 });
 
-router.get('/', async (req,res) => {
+
+router.get('/all', async (req,res) => {
     const reservation = await Reservation
                                 .find()
                                 .sort('booking_date')
@@ -41,6 +48,7 @@ router.get('/', async (req,res) => {
 
     res.render('bookinglist',{reservation});
 });
+
 
 router.all('/delete/:id', async (req, res) => {
     const query = {_id: req.params.id}

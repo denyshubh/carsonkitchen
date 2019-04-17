@@ -29,7 +29,7 @@ $(function () {
     }
 });
 
-if(document.getElementById("menu_cat_modal")) {
+if (document.getElementById("menu_cat_modal")) {
     const cat_box = new Vue({
         el: "#menu_cat_modal",
         data: {
@@ -45,12 +45,12 @@ if(document.getElementById("menu_cat_modal")) {
                 self.categories = res;
             });
 
-            window.onkeypress = function(e){
+            window.onkeypress = function (e) {
                 eb = e.key;
                 console.log(eb);
             }
 
-            document.onkeydown = function(e) {
+            document.onkeydown = function (e) {
                 switch (e.keyCode) {
                     case 37:
                         cat_box.onLeftClick();
@@ -61,20 +61,20 @@ if(document.getElementById("menu_cat_modal")) {
                 }
             };
 
-                // let event = window.event ? window.event : e;
-                // if(event.keyCode == 37){
-                //
-                //     this.onLeftClick()
-                // }
-                // console.log(event.keyCode)
+            // let event = window.event ? window.event : e;
+            // if(event.keyCode == 37){
+            //
+            //     this.onLeftClick()
+            // }
+            // console.log(event.keyCode)
             // $.getJSON("/menu/", [], function (res) {self.menu = res;})
         },
         methods: {
-            catBg: function(img){
-                return "background-image:url('http://192.168.43.244:3000"+img+"')";
+            catBg: function (img) {
+                return "background-image:url('http://192.168.43.244:3000" + img + "')";
             },
-            getImg:function(category){
-                return "http://192.168.43.244:3000"+category;
+            getImg: function (category) {
+                return "http://192.168.43.244:3000" + category;
             },
             onLeftClick: function () {
                 this.i = (this.i === 0) ? this.categories.length - 1 : this.i - 1;
@@ -125,7 +125,7 @@ if(document.getElementById("menu_cat_modal")) {
     });
 }
 
-if(document.getElementById("menu-page")) {
+if (document.getElementById("menu-page")) {
     const menu_page = new Vue({
         el: "#menu-page",
         data: {
@@ -171,92 +171,166 @@ if(document.getElementById("menu-page")) {
     });
 }
 
-const res = new Vue({
+const res = new Vue({});
 
-});
+if (document.getElementById("sec-reservation")) {
 
-if(document.getElementById("sec-reservation")){
-    let form_event_edit_basics = new Vue({
+    let fullFormat = "YYYY-MM-DD HH:mm:ss";
+    let dateFormat = "YYYY-MM-DD";
+    let bFormat = "Do MMM,YY. h:mm a";
+
+    let vRes = new Vue({
         el: "#sec-reservation",
         data: {
-            dateSelected : null,
-            events : []
+            bookings: [],
+            bDate: "",
+            bHour: 10,
+            bMin: 0,
+            bDH: 1, //booking duration hours
+            bDM: 0, //booking duration minutes
+            bGuests: 1,
+            bErrMsg: "",
+            sSlot: 10,
+            sRate: 30,
+            mRate: 30,
+            slots: [],
+            slot_selected: -1,
+            dM: 0,
+            dH: 0,
+            maxH: 24,
+            slot_rate: 30,
+            config: {
+                bookings_max: 1,
+                guest_limit: 8,
+                cost_per_limit: 300,
+                guest_limit_max: 60,
+                time_open: 10,
+                time_close: 22,
+                time_slot: 60 * 60 * 1000, //1 hour
+                slot_rates: {
+                    cur_rate: {
+                        rate: 60
+                    },
+                    new_rate: {
+                        from: "2019-04-20",
+                        rate: 30
+                    }
+                }
+            }
+        },
+        mounted: function () {
+            a = new Date();
+            this.bDate = `${a.getFullYear()}-${("0" + (a.getMonth() + 1)).slice(-2)}-${("0" + a.getDate()).slice(-2)}`;
+        },
+        computed: {
+            rM: {
+                get: function () {
+                    return this.dM;
+                },
+                set: function (nM) {
+                    return (this.dM = (nM > 0) ? ((nM < 30) ? 30 : 60) : 0);
+                }
+            },
+            rH: {
+                get: function () {
+                    return this.bDH;
+                },
+                set: function (nH) {
+                    let a = this.maxHours;
+                    this.bDH = nH > a ? a : nH;
+                }
+            },
+            maxHours: {
+                get: function () {
+                    return this.maxH;
+                },
+                set: function () {
+                    this.maxH = Math.floor(this.getMaxHours());
+                    if (this.dH > this.maxH) this.dH = a;
+                }
+            }
         },
         methods: {
-            bookReq: function(){
-                if(this.title.length < 5){
-                    swal({
-                        timer: 1500,
-                        icon: "warning",
-                        text: "Fill in title first"
+            getMinutesStep: () => {
+                return 30;
+            },
+            getMaxHours: function () {
+                if (this.slot_selected < 0) return 0;
+
+                let i = this.slot_selected;
+                let a = this.slots[i].time;
+
+                let s = this.slots.length - 1;
+                for (; ((i < s) && (!this.slots[i].full)); i++) {}
+
+                let b = this.slots[i];
+                return (b.time - a.time) / 60;
+            },
+            getSlots: function () {
+                let a = [], i = this.config.time_open;
+                for (; i < this.config.time_close; i += (this.slot_rate / 60))
+                    a.push({
+                        time: i * 60,
+                        label: ((i % 1) == 0) ? i : `${i - i % 1}${this.slot_rate === 60 ? "" : ":30"}`,
+                        full: this.isSlotFull(i * 60),
+                        selected: false,
                     });
-                    return;
+
+                return this.slots = a;
+            },
+            isSlotFull: function (i) {
+                let s = 0;
+                this.bookings.forEach(function (e) {
+                    let f = parseInt(e.time) * 60;
+                    let l = f + (e.duration * 60);
+                    if (i >= f && i < l) s++;
+                });
+                return s >= this.config.bookings_max;
+            },
+            slotClicked: function (d) {
+                let curI = this.slots.findIndex(x => x.label === d.label);
+
+                if (this.slots[curI].full) return;
+
+                if (this.slot_selected >= 0) {
+                    this.slots[this.slot_selected].selected = false;
                 }
 
-                form_event_edit_basics.submitBtnText = "Saving ...";
-                form_event_edit_basics.isSubmitBtnDisabled = true;
+                this.slot_selected = curI;
+                this.slots[this.slot_selected].selected = true;
 
-                let dots = ".";
-                let intervalHandle1 = setInterval(function(){
-                    dots = dots.length > 4 ? "." : (dots.length > 2 ? ". . ." : ". .");
-                    form_event_edit_basics.submitBtnText = "Creating Event " + dots;
-                }, 250);
-
+                let h = Math.floor(this.getMaxHours());
+                this.rH = h < this.rH ? h : this.rH;
+            },
+        },
+        watch: {
+            bDate: function () {
+                this.slot_rate = moment(this.bDate).isBefore(this.config.slot_rates.new_rate.from) ? this.config.slot_rates.cur_rate.rate : this.config.slot_rates.new_rate.rate;
                 let data = {
-                    event_slug: form_event_edit_basics.slug,
-                    title: form_event_edit_basics.title,
-                    visibility: form_event_edit_basics.visibility,
-                    date_start: form_event_edit_basics.dateStart,
-                    date_end: form_event_edit_basics.dateEnd,
+                    "date": vRes.bDate
                 };
+                this.bookings = null;
 
-                $.post({
-                    url: RootURL + 'event/edit',
-                    timeout: 5000,
+                $.ajax({
+                    type: "GET",
+                    url: "/api/reservation/d",
                     data: data,
-                    success: function(result, res){
-                        clearInterval(intervalHandle1);
-                        intervalHandle1 = 0;
-
-                        if(result.result){
-                            Vue.swal({
-                                timer: 3500,
-                                toast: true,
-                                type: "success",
-                                text: "Updated",
-                                showCancelButton: false,
-                                showConfirmButton: false
-                            });
-                        }else{
-                            Vue.swal({
-                                timer: 3500,
-                                toast: true,
-                                type: "error",
-                                text: result.message,
-                                showCancelButton: false,
-                                showConfirmButton: false
-                            });
-                        }
-
-                        form_event_edit_basics.submitBtnText = "Save";
-                        form_event_edit_basics.isSubmitBtnDisabled = false;
+                    dataType: "text",
+                    success: function (res) {
+                        vRes.bookings = JSON.parse(res);
+                        vRes.getSlots();
                     },
-                    error: function(jqXHR, textStatus, errorThrown){
-                        alert(textStatus); // this will be "timeout"
-                        form_event_edit_basics.submitBtnText = "Save";
-                        form_event_edit_basics.isSubmitBtnDisabled = false;
+                    error: function (res, err) {
+                        console.log(err);
+                        vRes.bookings = [];
+                        vRes.bErrMsg = "Please Select Date Again, something went wrong";
                     }
                 });
             }
-        },
-        watch:{
-            dateSelected : function(){
-
-            }
         }
-
     });
 
+    /*
     let DrpMinDate = moment().startOf('hour');
 
     let fullFormat = "YYYY-MM-DD HH:mm:ss";
@@ -287,38 +361,40 @@ if(document.getElementById("sec-reservation")){
 
     form_event_edit_basics.dateStart = DrpDateStart.format(fullFormat);
     form_event_edit_basics.dateEnd = DrpDateEnd.format(fullFormat);
-
+*/
 }
 
 
-const sec_review = new Vue({
-    el: "#reviews",
-    data: {
-        reviews : null,
-        menu: null
-    },
-    mounted: function () {
-        let self = this;
-        $.getJSON("/api/category/", [], function (res) {
-            self.reviews = res;
-        });
-    },
-    methods: {
-        getImg : function (img){
-            return img;
+if (document.getElementById("reviews")) {
+    const sec_review = new Vue({
+        el: "#reviews",
+        data: {
+            reviews: null,
+            menu: null
         },
-        onLeftClick: function () {
-            console.log("left clicked");
+        mounted: function () {
+            let self = this;
+            $.getJSON("/api/review", [], function (res) {
+                self.reviews = res;
+            });
         },
-        onRightClick: function () {
-            console.log("right clicked");
-        },
-        onCloseClick: function (e) {
-            console.log("on close click");
-            $($(e.target).closest('.section-close-btn')).toggleClass("rotate");
-            setTimeout(function () {
-                toggleMenuCatModalSection();
-            }, 1100);
+        methods: {
+            getImg: function (img) {
+                return img;
+            },
+            onLeftClick: function () {
+                console.log("left clicked");
+            },
+            onRightClick: function () {
+                console.log("right clicked");
+            },
+            onCloseClick: function (e) {
+                console.log("on close click");
+                $($(e.target).closest('.section-close-btn')).toggleClass("rotate");
+                setTimeout(function () {
+                    toggleMenuCatModalSection();
+                }, 1100);
+            }
         }
-    }
-});
+    });
+}
