@@ -1,6 +1,7 @@
 const express = require('express');
 const menuItem = require('../routes/menuItem');
 const category = require('../routes/categories');
+const reviews = require('../routes/reviews');
 const users = require('../routes/users');
 const auth = require('../routes/auth');
 const index = require('../routes/index');
@@ -15,6 +16,7 @@ module.exports = function(app) {
   app.use('/api/category',category);
   app.use('/api/auth',auth);
   app.use('/api/users',users);
+  app.use('/review', reviews);
   app.use('/',index);
   app.use('/reservation',reservation);
   app.use(error);

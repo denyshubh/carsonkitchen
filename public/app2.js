@@ -111,6 +111,8 @@ if(document.getElementById("menu_cat_modal")) {
     });
 }
 
+if(document.getElementById("menu-page")) {
+
 const menu_page = new Vue({
     el: "#menu-page",
     data: {
@@ -154,7 +156,7 @@ const menu_page = new Vue({
         }
     }
 });
-
+}
 const res = new Vue({
 
 });
@@ -278,19 +280,17 @@ if(document.getElementById("sec-reservation")){
 const sec_review = new Vue({
     el: "#reviews",
     data: {
-        reviews : null,
-        menu: null
+        reviews : null
     },
     mounted: function () {
-        let self = this;
-        $.getJSON("/api/category/", [], function (res) {
-            self.reviews = res;
+        $.getJSON("/review", [], function (res) {
+            sec_review.reviews = res;
         });
     },
     methods: {
         getImg : function (img){
             return img;
-        }
+        },
         onLeftClick: function () {
             console.log("left clicked");
         },
