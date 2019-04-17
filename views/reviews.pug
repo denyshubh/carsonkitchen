@@ -1,15 +1,13 @@
 section#reviews.container.text-center.mb-5.mt-5
 h4 Reviews 
   .row.justify-content-center
-    //CUADRICULA SERVIVIOS
     .col-lg-4.col-md-6.col-sm-(v-for="r in reviews")
-      //PRIMERA IMAGEN
       .card.mb-4
         img.card-img-top(src='getImg(r.img)', alt='bg')
         .card-body
           h2.card-title.m-0
             font(style='vertical-align: inherit;')
-              font(style='vertical-align: inherit;') {{ r.title }}
+              font(style='vertical-align: inherit;') {{ r.head }}
           p
             font(style='vertical-align: inherit;')
-              font(style='vertical-align: inherit;') {{ r.title }}
+              font(style='vertical-align: inherit;') {{ r.message }}

@@ -47,6 +47,16 @@ router.get('/add/category', (req,res) => {
         res.render('login'); 
 });
 
+router.get('/add/review', (req,res) => {
+    
+    if(IsAdmin(req)){
+        res.render('add-review');
+    }
+    else
+        res.render('login'); 
+});
+
+
 function IsAdmin(req)
 {
   const { token } = req.cookies;
