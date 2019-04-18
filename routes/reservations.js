@@ -7,15 +7,13 @@ router.post('/', async (req,res) => {
     const { error } = validate(req.body); 
     if (error) return res.status(400).send(error.details[0].message);
 
-    let reservation = new Reservation({ 
-
-        table: req.body.table,
+    let reservation = new Reservation({
         booking_date:req.body.booking_date,
         time:req.body.time,
         duration:req.body.duration,
         no_of_guest:req.body.no_of_guest,
         purpose:req.body.purpose,
-        booked_on :req.body.booked_on ,
+        booked_on : Date.now(),
         customer_id:req.body.customer_id
       
     });
