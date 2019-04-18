@@ -5,7 +5,7 @@ h4 Reviews
     .col-lg-4.col-md-6.col-sm-(v-for="r in reviews")
       //PRIMERA IMAGEN
       .card.mb-4
-        img.card-img-top(src='getImg(r.img)', alt='bg')
+        img.card-img-top(:src= src='getImg(r.img)', alt='bg')
         .card-body
           h2.card-title.m-0
             font(style='vertical-align: inherit;')

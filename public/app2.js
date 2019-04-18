@@ -48,7 +48,7 @@ if (document.getElementById("menu_cat_modal")) {
             window.onkeypress = function (e) {
                 eb = e.key;
                 console.log(eb);
-            }
+            };
 
             document.onkeydown = function (e) {
                 switch (e.keyCode) {
@@ -60,14 +60,6 @@ if (document.getElementById("menu_cat_modal")) {
                         break;
                 }
             };
-
-            // let event = window.event ? window.event : e;
-            // if(event.keyCode == 37){
-            //
-            //     this.onLeftClick()
-            // }
-            // console.log(event.keyCode)
-            // $.getJSON("/menu/", [], function (res) {self.menu = res;})
         },
         methods: {
             catBg: function (img) {
@@ -182,27 +174,25 @@ if (document.getElementById("sec-reservation")) {
     let vRes = new Vue({
         el: "#sec-reservation",
         data: {
+            section:1,
             bookings: [],
             bDate: "",
             bHour: 10,
             bMin: 0,
             bDH: 1, //booking duration hours
             bDM: 0, //booking duration minutes
-            bGuests: 1,
+            bGuests: 6,
             bErrMsg: "",
-            sSlot: 10,
-            sRate: 30,
-            mRate: 30,
-            slots: [],
+            slots: [], guests:[],
             slot_selected: -1,
-            dM: 0,
-            dH: 0,
+            dM: 0, dH: 0,
             maxH: 24,
             slot_rate: 30,
             config: {
                 bookings_max: 1,
                 guest_limit: 8,
-                cost_per_limit: 300,
+                guest_range: [6,10],
+                cost_rate: 300,
                 guest_limit_max: 60,
                 time_open: 10,
                 time_close: 22,
@@ -215,20 +205,22 @@ if (document.getElementById("sec-reservation")) {
                         from: "2019-04-20",
                         rate: 30
                     }
-                }
+                },
+                note:"For parties of 5 or less, we only accept walk-ins. Please use this form for parties of 6 - 10. For larger groups, please call our restaurant at (702) 473- 9523"
             }
         },
         mounted: function () {
             a = new Date();
             this.bDate = `${a.getFullYear()}-${("0" + (a.getMonth() + 1)).slice(-2)}-${("0" + a.getDate()).slice(-2)}`;
+            this.getGuests();
         },
         computed: {
             rM: {
                 get: function () {
-                    return this.dM;
+                    return this.bDM;
                 },
                 set: function (nM) {
-                    return (this.dM = (nM > 0) ? ((nM < 30) ? 30 : 60) : 0);
+                    this.bDM = parseInt(this.bDM = (nM > 0) ? ((nM < 30) ? 30 : 60) : 0);
                 }
             },
             rH: {
@@ -237,16 +229,16 @@ if (document.getElementById("sec-reservation")) {
                 },
                 set: function (nH) {
                     let a = this.maxHours;
-                    this.bDH = nH > a ? a : nH;
+                    this.bDH = parseInt(nH > a ? a : nH);
                 }
             },
             maxHours: {
                 get: function () {
                     return this.maxH;
                 },
-                set: function () {
-                    this.maxH = Math.floor(this.getMaxHours());
-                    if (this.dH > this.maxH) this.dH = a;
+                set: function (nHMax) {
+                    this.maxH = nHMax;
+                    if (this.bDH > this.maxH) this.bDH = nHMax;
                 }
             }
         },
@@ -263,8 +255,23 @@ if (document.getElementById("sec-reservation")) {
                 let s = this.slots.length - 1;
                 for (; ((i < s) && (!this.slots[i].full)); i++) {}
 
-                let b = this.slots[i];
-                return (b.time - a.time) / 60;
+                let btime = this.slots[i].time;
+                return ((btime - a) / 60);
+            },
+            getGuests:function(){
+                let min = this.config.guest_range[0];
+                let max = this.config.guest_range[1];
+                let a = [];
+                let i = min;
+
+                for(;i<=max;i++){
+                    a.push({
+                        val: i ,
+                        label: `${i} Guests`,
+                        s : i === min
+                    });
+                }
+                return this.guests = a;
             },
             getSlots: function () {
                 let a = [], i = this.config.time_open;
@@ -299,9 +306,31 @@ if (document.getElementById("sec-reservation")) {
                 this.slot_selected = curI;
                 this.slots[this.slot_selected].selected = true;
 
-                let h = Math.floor(this.getMaxHours());
-                this.rH = h < this.rH ? h : this.rH;
+                this.maxHours = Math.floor(this.getMaxHours());
+                this.rH = this.maxHours < this.rH ? this.maxHours : this.rH;
             },
+            bookNow:function(){
+                let res = {};
+
+                res.time = this.slots[this.slot_selected].time;
+                res.duration = this.bDH*60+this.bDM;
+                res.booking_date = moment(this.bDate).add(res.time,"minutes").format(fullFormat);
+                res.no_of_guest = this.bGuests;
+
+                $.ajax({
+                    type: "POST",
+                    url: "/api/reservation",
+                    data: res,
+                    dataType: "text",
+                    success: function (res) {
+                        console.log(res);
+                    },
+                    error: function (res, err) {
+                        console.log(err);
+                        vRes.bErrMsg = err;
+                    }
+                });
+            }
         },
         watch: {
             bDate: function () {
