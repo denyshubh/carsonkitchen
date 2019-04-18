@@ -403,7 +403,7 @@ if (document.getElementById("reviews")) {
         },
         mounted: function () {
             let self = this;
-            $.getJSON("/api/review", [], function (res) {
+            $.getJSON("/review", [], function (res) {
                 self.reviews = res;
             });
         },
