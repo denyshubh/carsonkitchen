@@ -31,6 +31,12 @@ body.scroll-start.half .navbar-top.fixed {
 
 }
 
+#foodCarouselMob > div{
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat:  no-repeat;
+}
+
 /*Menu Section*/
 .section-table {
     width: 100%;
