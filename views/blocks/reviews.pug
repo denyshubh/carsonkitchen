@@ -1,15 +1,22 @@
-section#reviews(style = "background: url(https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)")
-  .container.text-center.col-md-8.col-md-offset-2
-    .row.justify-content-center
-      //CUADRICULA SERVIVIOS
-      .col-lg-4.col-md-6.col-sm-(v-for="r in reviews")
-        //PRIMERA IMAGEN
-        .card.mb-4
-          //img.card-img-top( :src='getImg(r.img)', alt='bg')
-          .card-body
-            h2.card-title.m-0
-              font(style='vertical-align: inherit;')
-                font(style='vertical-align: inherit;') {{ r.head }}
-            p
-              font(style='vertical-align: inherit;')
-                font(style='vertical-align: inherit;') {{ r.message }}
+section#review(style = "background: url(https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)")
+	.container-fluid.p-0.py-3()
+		#reviewCarousel.carousel.slide(data-ride="review_i")
+			ol.carousel-indicators
+				li(data-target="#reviewCarousel" data-slide-to="index" :class="{'active':(reviews[review_i]._id==r._id)}" v-for="(r,index) in reviews")
+
+			.carousel-inner
+				.carousel-item(:class="{'active':(reviews[review_i]._id==r._id)}" v-for="r in reviews")
+					.container-fluid.text-center.py-5
+						.row.py-3
+							.col-8.offset-2
+								.review-wrapper.p-3
+									h3.review-msg {{ r.message }}
+									br
+									h5.review-head.text-uppercase.m-0 {{ r.head }}
+
+			a.carousel-control-prev(href="#reviewCarousel", role="button", data-slide="prev")
+				span.carousel-control-prev-icon(aria-hidden="true")
+				span.sr-only Previous
+			a.carousel-control-next(href="#reviewCarousel", role="button", data-slide="next")
+				span.carousel-control-next-icon(aria-hidden="true")
+				span.sr-only Next

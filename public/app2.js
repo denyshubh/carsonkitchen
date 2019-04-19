@@ -123,6 +123,8 @@ if (document.getElementById("menu-page")) {
         data: {
             categories: null,
             i: 0,
+            autoRotate:true,
+            autoRotateH:null
         },
         mounted: function () {
             let self = this;
@@ -138,7 +140,6 @@ if (document.getElementById("menu-page")) {
                 this.i = (this.i === this.categories.length - 1) ? 0 : this.i + 1;
             },
             onCloseClick: function (e) {
-                console.log("on close click");
                 $($(e.target).closest('.section-close-btn')).toggleClass("rotate");
                 setTimeout(function () {
                     this.boxToggle();
@@ -148,9 +149,9 @@ if (document.getElementById("menu-page")) {
                 $("#menu_cat_modal").toggleClass("show");
                 $(".section-menc").toggleClass("show");
 
-                if (autoRotate) {
+                if (this.autoRotate) {
                     if (this.autoRotateH) {
-                        clearInterval(autoRotateH);
+                        clearInterval(this.autoRotateH);
                         this.autoRotateH = 0;
                     } else {
                         this.autoRotateH = setInterval(function () {
@@ -162,8 +163,6 @@ if (document.getElementById("menu-page")) {
         }
     });
 }
-
-const res = new Vue({});
 
 if (document.getElementById("sec-reservation")) {
 
@@ -358,48 +357,15 @@ if (document.getElementById("sec-reservation")) {
             }
         }
     });
-
-    /*
-    let DrpMinDate = moment().startOf('hour');
-
-    let fullFormat = "YYYY-MM-DD HH:mm:ss";
-    let shortFormat = "Do MMM,YY. h:mm a";
-
-    let DrpDateStart = form_event_edit_basics.dateStart ?
-        moment(form_event_edit_basics.dateStart) : moment().startOf('hour');
-
-    let DrpDateEnd = form_event_edit_basics.dateEnd ?
-        moment(form_event_edit_basics.dateEnd) : moment().startOf('hour').add(32, 'hour');
-
-
-    $('input[id="event-daterange"]').daterangepicker({
-        "maxSpan": {"days": 10},
-        "alwaysShowCalendars": true,
-        "timePicker": true,
-        "minDate": DrpMinDate,
-        "startDate": DrpDateStart,
-        "endDate": DrpDateEnd,
-        "locale": {
-            format: shortFormat
-        }
-    }, function(start, end){
-        form_event_edit_basics.dateStart = start.format(fullFormat);
-        form_event_edit_basics.dateEnd = end.format(fullFormat);
-        console.log('New date range selected: ' + start.format(fullFormat) + ' to ' + end.format(fullFormat));
-    });
-
-    form_event_edit_basics.dateStart = DrpDateStart.format(fullFormat);
-    form_event_edit_basics.dateEnd = DrpDateEnd.format(fullFormat);
-*/
 }
 
 
-if (document.getElementById("reviews")) {
+if (document.getElementById("review")) {
     const sec_review = new Vue({
-        el: "#reviews",
+        el: "#review",
         data: {
             reviews: null,
-            menu: null
+            review_i:0,
         },
         mounted: function () {
             let self = this;
@@ -411,19 +377,6 @@ if (document.getElementById("reviews")) {
             getImg: function (img) {
                 return img;
             },
-            onLeftClick: function () {
-                console.log("left clicked");
-            },
-            onRightClick: function () {
-                console.log("right clicked");
-            },
-            onCloseClick: function (e) {
-                console.log("on close click");
-                $($(e.target).closest('.section-close-btn')).toggleClass("rotate");
-                setTimeout(function () {
-                    toggleMenuCatModalSection();
-                }, 1100);
-            }
         }
     });
 }

@@ -1,97 +1,94 @@
-.container-fluid{
+.container-fluid {
     padding: 0;
 }
 
 /* Navbar Top */
-.navbar-top{
+.navbar-top {
     position: absolute;
-    top:0;
-    left:0;
-    right:0;
-    z-index:699;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 699;
 }
 
-body.scroll-start .navbar-top.fixed{
+body.scroll-start .navbar-top.fixed {
     background-color: white;
     position: fixed;
-    top:-70px;
+    top: -70px;
 }
+
 body.scroll-start.ten .navbar-top.fixed {
     transform-origin: top;
     transition: all 500ms;
 }
 
-body.scroll-start.half .navbar-top.fixed{
+body.scroll-start.half .navbar-top.fixed {
     background-color: white;
     /*box-shadow: 2px 2px 1px 1px rgba(0,0,0,0.8);*/
-    box-shadow: 0px 1px 4px -1px rgba(0,0,0,0.5);
+    box-shadow: 0px 1px 4px -1px rgba(0, 0, 0, 0.5);
     position: fixed;
-    top:0;
+    top: 0;
 
 }
 
-
-
-
 /*Menu Section*/
-.section-table{
+.section-table {
     width: 100%;
     height: 4000px;
     background-color: #194853;
-    background-image: url("https://images.unsplash.com/photo-1470790376778-a9fbc86d70e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1549&q=80") ;
+    background-image: url("https://images.unsplash.com/photo-1470790376778-a9fbc86d70e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1549&q=80");
     background-repeat: repeat;
     background-position: top;
     position: relative;
-    overflow:hidden;
+    overflow: hidden;
     z-index: 600;
 }
 
-.table{
+.table {
     width: 100%;
     height: 100%;
-    background-image: url("/img/pattern-table-top.png") ;
+    background-image: url("/img/pattern-table-top.png");
     background-repeat: repeat-x;
     background-position: top;
     position: absolute;
-    overflow:hidden;
+    overflow: hidden;
 }
-
 
 .sec-t {
     position: absolute;
 }
 
-.basilic{
-    top:0;
-    left:calc(50% - 370px);
+.basilic {
+    top: 0;
+    left: calc(50% - 370px);
     z-index: 616;
 }
 
-.huile{
-    top:150px;
-    left:calc(50% - 500px);
+.huile {
+    top: 150px;
+    left: calc(50% - 500px);
     z-index: 616;
 }
 
-.huile img{
+.huile img {
     height: 150px;
 }
 
-.menucarte{
+.menucarte {
     position: absolute;
     top: 40px;
     right: calc(50% - 545px);
     z-index: 615;
 }
 
-.plate1{
+.plate1 {
     position: absolute;
     top: 300px;
     left: calc(50% - 534px);
     z-index: 620;
 }
 
-.tomates-cerise{
+.tomates-cerise {
     position: absolute;
     top: 791px;
     left: calc(50% - 550px);
@@ -103,9 +100,9 @@ body.scroll-start.half .navbar-top.fixed{
     width: 360px;
 }
 
-.planchecharcuterie{
+.planchecharcuterie {
     position: absolute;
-    top :747px ;
+    top: 747px;
     left: calc(50% + 34px);
     z-index: 621;
 }
@@ -116,107 +113,109 @@ body.scroll-start.half .navbar-top.fixed{
     left: calc(50% - 449px);
     z-index: 622;
 }
-.moutarde img{
+
+.moutarde img {
     width: 180px;
 }
 
-.burger{
+.burger {
     position: absolute;
     top: 1370px;
     left: calc(50% - 455px);
     z-index: 622;
 }
-.burger img{
-    width:90%;
+
+.burger img {
+    width: 90%;
 }
 
-
-.frittes{
+.frittes {
     position: absolute;
     top: 1488px;
     left: calc(50% + 250px);
     z-index: 622;
 }
-.frittes img{
+
+.frittes img {
     width: 520px;
 }
 
-
-.nosplats{
+.nosplats {
     position: absolute;
     top: 1480px;
     left: calc(50% + 40px);
 }
 
-.soja{
+.soja {
     position: absolute;
     top: 2063px;
     left: calc(50% + 689px);
     z-index: 622;
 }
-.soja img{
-    width : 200px;
+
+.soja img {
+    width: 200px;
 }
 
-
-.wasabi{
+.wasabi {
     position: absolute;
     top: 1820px;
     left: calc(50% + 600px);
     z-index: 622;
 }
-.wasabi img{
-    width : 150px;
+
+.wasabi img {
+    width: 150px;
 }
 
-.sushis{
+.sushis {
     position: absolute;
     top: 1850px;
     left: calc(50% + 90px);
     z-index: 622;
 }
 
-
-.enviedesushi{
+.enviedesushi {
     position: absolute;
     top: 2061px;
     left: calc(50% + 40px);
 }
 
-.morceaux-chocolat{
+.morceaux-chocolat {
     position: absolute;
     top: 2714px;
     left: calc(50% + 360px);
     z-index: 625;
 }
 
-.oeuf{
+.oeuf {
     position: absolute;
     top: 2660px;
     left: calc(50% + 310px);
     z-index: 626;
     transform: rotate(-10deg);
 }
-.gourmandise-1{
+
+.gourmandise-1 {
     position: absolute;
     top: 2157px;
     left: calc(50% - 565px);
     z-index: 625;
 }
-.gourmandise-2{
+
+.gourmandise-2 {
     position: absolute;
     top: 2513px;
     left: calc(50% + -558px);
     z-index: 626;
 }
 
-.gourmandise-3{
+.gourmandise-3 {
     position: absolute;
     top: 2306px;
     left: calc(50% + 40px);
     z-index: 627;
 }
-
 
 .agrumes {
     position: absolute;
@@ -225,7 +224,7 @@ body.scroll-start.half .navbar-top.fixed{
     z-index: 628;
 }
 
-.cocktail{
+.cocktail {
     position: absolute;
     top: 2970px;
     left: calc(50% - 315px);
@@ -240,36 +239,34 @@ body.scroll-start.half .navbar-top.fixed{
     transform: rotate(-17deg);
 }
 
-.muffin{
+.muffin {
     position: absolute;
     top: 3539px;
     left: calc(50% - 560px);
     z-index: 629;
 }
 
-.mug-3{
+.mug-3 {
     position: absolute;
     top: 3300px;
     left: calc(50% - 60px);
     z-index: 630;
 }
 
-
-
 /* MENU SECTION 6 */
-.rollover{
+.rollover {
     position: absolute;
     border-radius: 50%;
     /*background-color: rgba(0,255,0,0.5);*/
 
 }
 
-.roundbtn{
+.roundbtn {
     /*opacity: 0;*/
     position: absolute;
     border-radius: 50%;
-    background-color: rgba(0,0,0,1);
-    color: rgba(255,255,255,1);
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
     height: 150px;
     width: 150px;
     transform-origin: 50% 50%;
@@ -287,11 +284,11 @@ body.scroll-start.half .navbar-top.fixed{
 .plate1 .rollover {
     top: 5px;
     left: 62px;
-    width:478px;
+    width: 478px;
     height: 478px;
 }
 
-.plate1 .rollover:hover .roundbtn{
+.plate1 .rollover:hover .roundbtn {
     opacity: 1;
     transform: scale(1);
 }
@@ -302,6 +299,7 @@ body.scroll-start.half .navbar-top.fixed{
     width: 470px;
     height: 470px;
 }
+
 .burger .rollover {
     top: 38px;
     left: 29px;
@@ -323,7 +321,6 @@ body.scroll-start.half .navbar-top.fixed{
     height: 300px;
 }
 
-
 .cocktail .rollover {
     top: 6px;
     left: 70px;
@@ -338,28 +335,18 @@ body.scroll-start.half .navbar-top.fixed{
     height: 320px;
 }
 
-
-
-
-
-
-
-
-
-
-
-.cur-pointer{
+.cur-pointer {
     cursor: pointer;
 }
 
-#menu_cat_modal{
+#menu_cat_modal {
     display: none;
     position: fixed;
     left: 0;
     top: 0;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 800;
     opacity: 0;
     transition: 200ms all ease-in-out;
@@ -370,7 +357,7 @@ body.scroll-start.half .navbar-top.fixed{
     opacity: 1;
 }
 
-.section-menc{
+.section-menc {
     background-color: white;
     height: 80%;
     width: 80%;
@@ -382,73 +369,73 @@ body.scroll-start.half .navbar-top.fixed{
     transition-delay: 2s;
 }
 
-.section-btn{
+.section-btn {
     position: absolute;
-    top:0%;
-    bottom:0%;
-    width:10%;
+    top: 0%;
+    bottom: 0%;
+    width: 10%;
     border-width: 0px;
     -webkit-box-shadow: 0px 0px;
     box-shadow: 0px 0px;
-    background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
-    background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
-    background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+    background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop(0%, rgba(0, 0, 0, 0.00)), color-stop(100%, rgba(0, 0, 0, 0.00)));
+    background-image: -webkit-linear-gradient(270deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.00) 100%);
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.00) 100%);
 }
 
-.section-btn:hover{
-    background-color: rgba(0,0,0,0.6);
+.section-btn:hover {
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
-.section-left-btn{
-    left:0%;
+.section-left-btn {
+    left: 0%;
 }
 
-.section-left-btn img{
+.section-left-btn img {
     position: absolute;
-    top:40%;
-    right:10%;
+    top: 40%;
+    right: 10%;
 }
 
-.section-right-btn{
-    right:0%;
+.section-right-btn {
+    right: 0%;
 }
 
-.section-right-btn img{
+.section-right-btn img {
     position: absolute;
-    top:40%;
-    left:10%;
+    top: 40%;
+    left: 10%;
 }
 
-.section-close-btn{
+.section-close-btn {
     transition: transform 1s;
 }
 
-.section-close-btn.rotate{
+.section-close-btn.rotate {
     -ms-transform: rotate(1turn);
     -moz-transform: rotate(1turn);
     -webkit-transform: rotate(1turn);
     transform: rotate(1turn);
 }
 
-.section-menc.show{
+.section-menc.show {
     width: 80%;
     opacity: 1;
 }
 
-#category-box{
+#category-box {
     height: 100%;
     overflow-y: hidden;
     overflow-x: auto;
 }
 
-#category-box .category-box-inner{
+#category-box .category-box-inner {
     height: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
 }
 
 #category-box .category-block {
-    width:0%;
+    width: 0%;
     height: 0%;
     opacity: 0;
     display: inline-block;
@@ -457,31 +444,31 @@ body.scroll-start.half .navbar-top.fixed{
 }
 
 #category-box .category-block.show {
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     opacity: 1;
 }
 
-#category-box > div{
+#category-box > div {
     /*width:90%;*/
     /*margin-left: auto;*/
 }
 
-#category-box .menu-list{
+#category-box .menu-list {
     height: 100%;
     overflow-y: auto;
 }
 
-#category-box .sec-menu{
+#category-box .sec-menu {
     background-color: #ffda81;
     color: #454c24;
 }
 
-#category-box .menu-item{
+#category-box .menu-item {
 
 }
 
-#category-box .menu-item:hover{
+#category-box .menu-item:hover {
     color: rgba(57, 34, 31, 0.8);
     border-bottom: 2px solid #68290196;
     box-shadow: -1px 2px 4px 1px #68290196;
@@ -489,35 +476,32 @@ body.scroll-start.half .navbar-top.fixed{
 }
 
 /** Menu Page */
-#menu-page{
+#menu-page {
     background-color: antiquewhite;
 }
 
-#menu-page .men-page-inner{
+#menu-page .men-page-inner {
     height: 100%;
     overflow-y: hidden;
 }
 
-
 #menu-page .cat-block {
     border: 1px solid #1e7e34;
-    width:40%;
+    width: 40%;
     height: 100%;
     display: inline-block;
     transform-origin: left;
     transition: all 1s ease-in-out;
 }
 
-
-
-#sec-reservation{
+#sec-reservation {
     margin-top: -15vh;
     margin-bottom: 15vh;
-    box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.3);
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.3);
     background-color: white;
 }
 
-.tslot{
+.tslot {
     transition: 500ms all;
     color: white;
     background-color: #0b2e13;
@@ -532,7 +516,7 @@ body.scroll-start.half .navbar-top.fixed{
 .tslot.selected {
     transform: scale(1.2);
     border-radius: 25%;
-    box-shadow: 0px 1px 2px 2px rgba(20,20,20,0.3) ;
+    box-shadow: 0px 1px 2px 2px rgba(20, 20, 20, 0.3);
     background-color: green;
 }
 
@@ -545,16 +529,16 @@ body.scroll-start.half .navbar-top.fixed{
     transform: scale(1)
 }
 
-.tslot:hover{
+.tslot:hover {
     transform: scale(1.2);
     border-radius: 25%;
-    box-shadow: 0px 1px 2px 2px rgba(20,20,20,0.3) ;
+    box-shadow: 0px 1px 2px 2px rgba(20, 20, 20, 0.3);
 }
 
-.dateBlock{
+.dateBlock {
     border: 1px solid black;
     border-radius: 50%;
-    color:white;
+    color: white;
     background-color: #1d68a7;
 }
 
@@ -576,4 +560,26 @@ body.scroll-start.half .navbar-top.fixed{
 
 .background-image-holder.fadeIn {
     opacity: 1;
+}
+
+
+
+#review{
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: 50% 50% !important;
+    position: relative;
+    transition: all 700ms;
+}
+
+.review-wrapper{
+    background-color: rgba(0,0,0,0.7);
+    color: ghostwhite;
+    border-radius: 10px;
+}
+
+.review-msg{
+    font-family: "Raleway", sans-serif;
+    line-height: 40px;
+    font-weight:200px
 }
