@@ -1,0 +1,16 @@
+.container-fluid.p-0
+	#foodCarousel.carousel.slide(data-ride="carousel")
+		.carousel-inner
+			.carousel-item.active
+				img.d-block(src="http://jpcamara.com/wp-content/uploads/2015/02/carousel.jpg", alt="First slide")
+			.carousel-item
+				img.d-block(src="http://jpcamara.com/wp-content/uploads/2015/02/carousel.jpg", alt="Second slide")
+			.carousel-item
+				img.d-block(src="http://jpcamara.com/wp-content/uploads/2015/02/carousel.jpg", alt="Third slide")
+
+		a.carousel-control-prev(href="#foodCarousel", role="button", data-slide="prev")
+			span.carousel-control-prev-icon(aria-hidden="true")
+			span.sr-only Previous
+		a.carousel-control-next(href="#foodCarousel", role="button", data-slide="next")
+			span.carousel-control-next-icon(aria-hidden="true")
+			span.sr-only Next
