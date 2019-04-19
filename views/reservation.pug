@@ -52,7 +52,7 @@ block content
 									.tslotwrapper
 										h5.mb-0 Reservation Hour
 										.tslot.px-2.py-1.my-2.mx-1.d-inline-block(@click="slotClicked(d)" v-for="d in slots" :class="{'full disabled': d.full,'selected' : d.selected }" :disabled="d.full")
-											h4 {{ d.label }}
+											h6 {{ d.label }} pm
 								.container-fluid.mt-3(v-if="slots.length")
 									h5.mb-2.mr-3.d-inline-block Reservation Duration
 									.container-fluid.p-2
