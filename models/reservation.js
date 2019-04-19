@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const Joi = require('joi');
 const Reservation =mongoose.model('Reservation', new mongoose.Schema({
 
-    table : {
-        type: String,
-        required: true
-    },
     booking_date:{
         type: Date,
         required: true
@@ -23,7 +19,6 @@ const Reservation =mongoose.model('Reservation', new mongoose.Schema({
         type: Number,
         required: true
     },
-
     purpose:{
         type: String,
         default:'Other'
@@ -35,8 +30,8 @@ const Reservation =mongoose.model('Reservation', new mongoose.Schema({
     customer_id:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required:true,
-        unique: true 
+        // required:true,
+        // unique: true
     }
 
   
@@ -45,14 +40,13 @@ const Reservation =mongoose.model('Reservation', new mongoose.Schema({
 
 function validateReservation(reservation) {
     const schema = {
-        table: Joi.string().required(),
         booking_date:Joi.date().min(Date.now()).required(),
         time:Joi.string().required(),
         duration:Joi.number().required(),
         no_of_guest:Joi.number().required(),
-        purpose:Joi.string().required(),
+        purpose:Joi.string(),
         booked_on :Joi.date(),
-        customer_id:Joi.required()
+        customer_id:Joi.string()
     };
   
     return Joi.validate(reservation, schema);
