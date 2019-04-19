@@ -1,19 +1,36 @@
 extends layout
 
 block content
-	#menu-page.container-fluid.mt-5.pt-3
-		.row
-			.menu-page-inner
-				.cat-block.float-left(:class="{'show':(categories[i]._id==category._id)}" v-for="category in categories")
-					.container-fluid
-						.container-fluid.mt2-0.mx-0.row(style="height:100%;")
-							.col.mr-0.px-0.sec-menu(style="height:100%;")
-								.container-fluid.mt-2.mx-0(style="height:100%;")
-									h4.category-title.text-center.p-1 {{ category.title }}
-									hr.my-1
-									div.menu-list.pt-2.px-3(style="height:90%;")
+	#menu-page.container-fluid
+		.menu-page-head.bg-center-cover-nr.py-5(style="background-image:url('img/alta/evento.jpg')")
+			.menu-page-head-heading.py-5
+				.container.text-center.py-5
+					h1.text-center.py-2(style="border-top: 1px white solid; border-bottom: 1px white solid;") Menu
+			.menu-page-head-gradient(style="background-image:url('img/gradient-white-bottom-black-top.png')")
+		.container
+			.menu-page-inner.py-5
+				.menu-page-cat.my-5.p-3.container-fluid(:class="{'show':(categories[i]._id==category._id)}" v-for="category in categories")
+					.container-fluid.mt-2.mx-0
+						.sec-menu
+							.container-fluid.mt-2.mx-0
+								.container-fluid.text-center
+									h4.category-title.text-center.p-1.d-inline-block {{ category.title }}
+								.container-fluid.text-center
+									p.text-uppercase {{ category.desc }}
+								.container-fluid.row.my-2
+									.col-6.offset-3
+										img.img-fluid( src='img/alta/hamburguesa.jpg')
+
+								.container.mx-md-2
+									.menu-list.pt-2.py-3.px-3.mx-md-3
 										div.menu-item(v-for="item in category.menu")
-											span.float-right &dollar;{{item.price}}
-											h5.m-0.mt-2 {{item.title}}
-											span {{item.menu_desc}}
-											br
+											.container-fluid.row
+												.col-md-2.d-none.d-md-block
+													img.img-fluid.rounded-circle(src='img/salade-lentilles.png')
+												.col-md-8.col-10
+													h5.m-0.mt-2 {{item.title}}
+													span {{item.menu_desc}}
+												.col
+													span.float-right &dollar;{{item.price}}
+											hr.my-2
+
