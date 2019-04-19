@@ -380,3 +380,22 @@ if (document.getElementById("review")) {
         }
     });
 }
+
+$(function () {
+    let url = window.location.href;
+    let a = 0;
+
+   let $navtab =  $(".navbar-top ul li a").get();
+
+   $navtab.forEach(function (a,i) {
+       if(a.href === url) {
+           $(a).closest("li.nav-item").addClass("active");
+           a=1;
+       }
+
+       if(i === ($navtab.length-1) && a===0){
+           $(".navbar-top ul li.nav-item:first-child").addClass("active");
+       }
+   });
+
+});
