@@ -18,7 +18,7 @@
 
     }
 
-.navbar-top .navbar-nav a.nav-link:hover{ 
+.navbar-top .navbar-nav a.nav-link:hover{
        color: white;
        /* border-bottom: 1px white solid;  */
 
@@ -44,11 +44,23 @@ body.scroll-start.half .navbar-top.fixed {
 
 }
 
+.bg-center-cover-nr{
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat:  no-repeat;
+}
+
+.bg-repeat-x{
+    background-repeat: repeat-x;
+}
+
 #foodCarouselMob > div{
     background-size: cover;
     background-position: 50% 50%;
     background-repeat:  no-repeat;
 }
+
+
 
 /*Menu Section*/
 .section-table {
@@ -497,24 +509,6 @@ body.scroll-start.half .navbar-top.fixed {
     font-size: 0.8rem;
 }
 
-/** Menu Page */
-#menu-page {
-    background-color: antiquewhite;
-}
-
-#menu-page .men-page-inner {
-    height: 100%;
-    overflow-y: hidden;
-}
-
-#menu-page .cat-block {
-    border: 1px solid #1e7e34;
-    width: 40%;
-    height: 100%;
-    display: inline-block;
-    transform-origin: left;
-    transition: all 1s ease-in-out;
-}
 
 #sec-reservation {
     margin-top: -15vh;
@@ -619,15 +613,78 @@ a, a:visited, a:focus, a:active, a:hover {
 .footer-1 .sub {
     opacity: .5;
 }
+
+
+
+
+/** Menu Page */
+#menu-page {
+    background-color: rgba(229,229,229,0.7);
+}
+
+#menu-page .men-page-inner {
+    overflow-y: hidden;
+}
+
+#menu-page .cat-block {
+    border: 1px solid #1e7e34;
+    width: 40%;
+    display: inline-block;
+    transform-origin: left;
+    transition: all 1s ease-in-out;
+}
+
+
+.menu-page-head{
+    position: relative;
+    height: 50vh;
+}
+
+.menu-page-head-heading h1{
+    color: white;
+    /*background: rgba(0,0,0,0.2);*/
+    font-size: 400%;
+    font-family: "Raleway", cursive;
+    background: -moz-radial-gradient(center, ellipse cover, rgba(207,207,207,0) 0%, rgba(0,0,0,0.5) 0%, rgba(207,207,207,0) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(207,207,207,0) 0%, rgba(0,0,0,0.5) 0%, rgba(207,207,207,0) 100%);
+    background: radial-gradient(ellipse at center, rgba(207,207,207,0) 0%, rgba(0,0,0,0.5) 0%, rgba(207,207,207,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfcfcf', endColorstr='#cfcfcf', GradientType=1 );
+}
+
+.menu-page-head-gradient{
+    height: 100px;
+    background-repeat: repeat-x;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.menu-page-inner{
+    position: relative;
+    margin-top: -25vh;
+    z-index: 105;
+}
+
+.menu-page-cat{
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+    z-index: 105;
+}
+
+.menu-page-inner .category-title{
+    border-bottom: 2px grey dotted;
+    font-size: 250%;
+}
 @media (max-width: 768px) {
     .review-msg{
         font-size: 1rem;
-        line-height: inherit;  
-        font-weight:200;      
+        line-height: inherit;
+        font-weight:200;
     }
     .review-head{
         font-size: 0.8rem;
-        line-height: inherit;  
-        font-weight:200;      
+        line-height: inherit;
+        font-weight:200;
     }
 }
