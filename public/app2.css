@@ -11,6 +11,19 @@
     z-index: 699;
 }
 
+.navbar-top .navbar-nav a.nav-link{
+         color:#df943b;
+         font-weight: bold;
+         transition: all 0.3s;
+
+    }
+
+.navbar-top .navbar-nav a.nav-link:hover{ 
+       color: white;
+       /* border-bottom: 1px white solid;  */
+
+   }
+
 body.scroll-start .navbar-top.fixed {
     background-color: white;
     position: fixed;
