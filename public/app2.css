@@ -465,8 +465,8 @@ body.scroll-start.half .navbar-top.fixed {
 }
 
 #category-box .sec-menu {
-    background-color: #ffda81;
-    color: #454c24;
+    background-color: #32281d;
+    color: #f7eddc;
 }
 
 #category-box .menu-item {
@@ -474,10 +474,27 @@ body.scroll-start.half .navbar-top.fixed {
 }
 
 #category-box .menu-item:hover {
-    color: rgba(57, 34, 31, 0.8);
-    border-bottom: 2px solid #68290196;
-    box-shadow: -1px 2px 4px 1px #68290196;
+    color: rgba(243, 194, 122, 0.8);
+    border-bottom: 2px solid  #df943b;
+    box-shadow: -1px 2px 4px 1px  #df943b;
     padding: 2px 10px 10px;
+}
+
+.category-title {
+    font-family: "Lobster", cursive;
+    color: #df943b;
+}
+
+.menu-title {
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.menu-desc {
+    font-family: cursive;
+    padding: 2px;
+    font-size: 0.8rem;
 }
 
 /** Menu Page */
@@ -601,4 +618,16 @@ a, a:visited, a:focus, a:active, a:hover {
 
 .footer-1 .sub {
     opacity: .5;
+}
+@media (max-width: 768px) {
+    .review-msg{
+        font-size: 1rem;
+        line-height: inherit;  
+        font-weight:200;      
+    }
+    .review-head{
+        font-size: 0.8rem;
+        line-height: inherit;  
+        font-weight:200;      
+    }
 }

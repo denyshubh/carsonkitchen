@@ -66,8 +66,8 @@ div.container-fluid
 										h4.category-title.text-center.p-1 {{ category.title }}
 										hr.my-1
 										div.menu-list.pt-2.px-3(style="height:90%;")
-											div.menu-item(v-for="item in category.menu")
+											div.menu-item.mt-3(v-for="item in category.menu")
 												span.float-right &dollar;{{item.price}}
-												h5.m-0.mt-2 {{item.title}}
-												span {{item.menu_desc}}
+												h5.m-0.mt-2.menu-title {{item.title}}
+												span.menu-desc {{item.menu_desc}}
 												br
