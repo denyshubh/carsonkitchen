@@ -1,6 +1,6 @@
 .container-fluid.p-0
-	#foodCarousel.carousel.slide(data-ride="carousel" )
-		.carousel-inner(style ="height: 95vh")
+	#foodCarousel.d-none.d-md-block.carousel.slide(data-ride="carousel")
+		.carousel-inner
 			.carousel-item.active
 				img.d-block.img-fluid.h-auto(src="img/alta/granola.jpg", alt="First slide" ,style = "max-width: 100%")
 			.carousel-item
@@ -14,3 +14,6 @@
 		a.carousel-control-next(href="#foodCarousel", role="button", data-slide="next")
 			span.carousel-control-next-icon(aria-hidden="true")
 			span.sr-only Next
+
+	#foodCarouselMob.d-md-none
+		.container-fluid(style="height:90vh; background-image:url('img/alta/area-bar.jpg');")
