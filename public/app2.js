@@ -63,7 +63,7 @@ if (document.getElementById("menu_cat_modal")) {
         },
         methods: {
             catBg: function (img) {
-                return "background-image:url('http://192.168.43.244:3000" + img + "')";
+                return "background-image:url('" + img + "')";
             },
             getImg: function (category) {
                 return "http://192.168.43.244:3000" + category;
@@ -75,7 +75,6 @@ if (document.getElementById("menu_cat_modal")) {
                 this.i = (this.i === this.categories.length - 1) ? 0 : this.i + 1;
             },
             onCloseClick: function (e) {
-                console.log("on close click");
                 $($(e.target).closest('.section-close-btn')).toggleClass("rotate");
                 setTimeout(function () {
                     cat_box.boxToggle();

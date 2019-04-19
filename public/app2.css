@@ -567,5 +567,19 @@ body.scroll-start.half .navbar-top.fixed {
 .review-msg{
     font-family: "Raleway", sans-serif;
     line-height: 40px;
-    font-weight:200px
+    font-weight:200;
+}
+
+
+footer.bg-dark a {
+    color: #fff;
+}
+
+a, a:visited, a:focus, a:active, a:hover {
+    text-decoration: none;
+    outline: none;
+}
+
+.footer-1 .sub {
+    opacity: .5;
 }
