@@ -3,13 +3,13 @@ extends layout
 block content
 	.container-fluid.p-0
 		#foodCarousel.carousel.slide(data-ride="carousel")
-			.carousel-inner
+			.carousel-inner(role="listbox", style=" width:100%; height: 600px !important;")
 				.carousel-item.active
-					img.d-block(src="http://jpcamara.com/wp-content/uploads/2015/02/carousel.jpg", alt="First slide")
+					img.d-block.img-fluid(src="img/alta/cafe.jpg", alt="First slide",style=". max-width: 100%,height:auto")
 				.carousel-item
-					img.d-block(src="http://jpcamara.com/wp-content/uploads/2015/02/carousel.jpg", alt="Second slide")
+					img.d-block.img-fluid(src="img/alta/sushi.jpg", alt="Second slide", style=". max-width: 100%,height:auto" )
 				.carousel-item
-					img.d-block(src="http://jpcamara.com/wp-content/uploads/2015/02/carousel.jpg", alt="Third slide")
+					img.d-block.img-fluid(src="img/alta/hamburguesa.jpg", alt="Third slide", style=". max-width: 100%,height:auto")
 
 			a.carousel-control-prev(href="#foodCarousel", role="button", data-slide="prev")
 				span.carousel-control-prev-icon(aria-hidden="true")
