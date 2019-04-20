@@ -28,7 +28,6 @@ $(function () {
         }
     }
 });
-
 if (document.getElementById("menu_cat_modal")) {
     const cat_box = new Vue({
         el: "#menu_cat_modal",

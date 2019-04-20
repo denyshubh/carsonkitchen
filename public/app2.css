@@ -24,6 +24,11 @@
 
    }
 
+   .carousel-inner > .crousel-item > img {
+    width:100%;
+    height:95vh;
+  }
+
 body.scroll-start .navbar-top.fixed {
     background-color: white;
     position: fixed;
@@ -58,6 +63,7 @@ body.scroll-start.half .navbar-top.fixed {
     background-size: cover;
     background-position: 50% 50%;
     background-repeat:  no-repeat;
+    
 }
 
 
@@ -66,7 +72,7 @@ body.scroll-start.half .navbar-top.fixed {
 .section-table {
     width: 100%;
     height: 2222px;
-    background-color: #194853;
+    background-color: #052025;
     background-image: url("https://images.unsplash.com/photo-1470790376778-a9fbc86d70e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1549&q=80");
     background-repeat: repeat;
     background-position: top;
@@ -558,10 +564,11 @@ body.scroll-start.half .navbar-top.fixed {
 
 
 #sec-reservation {
-    margin-top: -15vh;
+    margin-top: -14vh;
     margin-bottom: 15vh;
     box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.3);
     background-color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
 .tslot {
@@ -684,7 +691,12 @@ a, a:visited, a:focus, a:active, a:hover {
 
 .menu-page-head{
     position: relative;
-    height: 50vh;
+    height: 70vh;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .menu-page-head-heading h1{
@@ -734,4 +746,57 @@ a, a:visited, a:focus, a:active, a:hover {
         line-height: inherit;
         font-weight:200;
     }
+}
+
+.group-page-head{
+    background-image:url('https://images.unsplash.com/photo-1525159831892-59d292d558b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
+    position: relative;
+    height: 90vh;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.reserve-page-head{
+    background-image:url('https://images.unsplash.com/photo-1503863627916-deb1706f5b79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
+    position: relative;
+    height: 80vh;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+/* PARALLAX EFFECT */
+.parallax-divison { 
+    /* The image used */
+    background:linear-gradient(rgba(15, 15, 15, 0.8),rgba(15, 15, 15, 0.3));
+    background-image: url("https://images.unsplash.com/photo-1477506350614-fcdc29a3b157?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
+    align-content: center;
+    /* Set a specific height */
+    height: 230px; 
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .parallax-divison {
+      background-attachment: scroll;
+      height: 200px;
+    }
+  }
+
+  
+.division-text {
+    color: #6b3e07;
+    padding-top: 10%;
+    font-family: "Lobster", cursive;
 }
