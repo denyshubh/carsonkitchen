@@ -12,9 +12,8 @@ router.post('/', async (req,res) => {
         time:req.body.time,
         duration:req.body.duration,
         no_of_guest:req.body.no_of_guest,
-        purpose:req.body.purpose,
         booked_on : Date.now(),
-        customer_id:req.body.customer_id
+        customer:req.body.customer
       
     });
 
@@ -39,8 +38,7 @@ router.get('/d', async (req,res)=>{
 router.get('/all', async (req,res) => {
     const reservation = await Reservation
                                 .find()
-                                .sort('booking_date')
-                                .populate('customer_id');
+                                .sort('booking_date');
 
 
     res.render('bookinglist',{reservation});
