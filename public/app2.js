@@ -99,7 +99,7 @@ if (document.getElementById("menu_cat_modal")) {
     });
 
     $(function () {
-        $(".section-table .rollover").click(function (e) {
+        $(".section-table .rollover.d-md-block").click(function (e) {
             let data_id = $(this).closest('.section-table .rollover').attr('data-id');
             cat_box.boxToggle();
         });
@@ -397,4 +397,9 @@ $(function () {
        }
    });
 
+    $('.back-to-top').click(function(){
+        $('#navbar-top').animate({
+            scrollTop: 0
+        }, 2000);
+    });
 });
