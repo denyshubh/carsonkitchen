@@ -21,13 +21,13 @@ router.get('/group', (req,res) => {
     res.render('groupDinning');
 });
 router.get('/about', (req,res) => {
-    res.send('Error 404, Psge Not Found ');
+    res.render('about');
 });
 router.get('/gift', (req,res) => {
     res.render('gift');
 });
 router.get('/location', (req,res) => {
-    res.send('Error 404, Psge Not Found ');
+    res.render('location');
 });
 
 
