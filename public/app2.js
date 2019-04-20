@@ -28,6 +28,7 @@ $(function () {
         }
     }
 });
+
 if (document.getElementById("menu_cat_modal")) {
     const cat_box = new Vue({
         el: "#menu_cat_modal",
@@ -396,4 +397,9 @@ $(function () {
        }
    });
 
+    $('.back-to-top').click(function(){
+        $('#navbar-top').animate({
+            scrollTop: 0
+        }, 2000);
+    });
 });
