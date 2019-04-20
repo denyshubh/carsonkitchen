@@ -15,7 +15,7 @@ router.get('/reservation', (req,res) => {
 });
 
 router.get('/group', (req,res) => {
-    res.render('groupDinning');
+    res.render('groupDining');
 });
 router.get('/about', (req,res) => {
     res.render('about');

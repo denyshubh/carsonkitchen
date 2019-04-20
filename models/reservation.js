@@ -26,6 +26,10 @@ const Reservation =mongoose.model('Reservation', new mongoose.Schema({
     customer:{
        type: Object,
        required: true
+    },
+    confirmedStatus:{
+        type:Number,
+        default:-1
     }
   }));
 
@@ -38,7 +42,7 @@ function validateReservation(reservation) {
         no_of_guest:Joi.number().required(),
         booked_on :Joi.date(),
         customer:Joi.required(),
-
+        customerStatus:Joi.number(),
     };
   
     return Joi.validate(reservation, schema);
