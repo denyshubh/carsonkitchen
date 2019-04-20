@@ -1,3 +1,7 @@
+body {
+    width: auto! important;
+    overflow-x: hidden! important;
+}
 .container-fluid {
     padding: 0;
 }
