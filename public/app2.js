@@ -180,6 +180,14 @@ if (document.getElementById("sec-reservation")) {
             bDH: 1, //booking duration hours
             bDM: 0, //booking duration minutes
             bGuests: 6,
+            bC:{
+              name:"",
+              email:"",
+              number:"",
+              purpose:"",
+              extra:""
+            },
+            bCErr:"",
             bErrMsg: "",
             slots: [], guests:[],
             slot_selected: -1,
@@ -273,14 +281,21 @@ if (document.getElementById("sec-reservation")) {
             },
             getSlots: function () {
                 let a = [], i = this.config.time_open;
-                for (; i < this.config.time_close; i += (this.slot_rate / 60))
+                for (; i < this.config.time_close; i += (this.slot_rate / 60)) {
+                    let t = moment("2019-04-20");
+                        t.add(i*60,"minutes");
+
+                        let label = t.format("hh:mm A");
+
+                    // label = ((i % 1) == 0) ? i%12 : `${(i - i % 1)%12}${(this.slot_rate === 60 ? "" : ":30")}`;
+                    // label += (i/12<1)? " am" : " pm";
                     a.push({
                         time: i * 60,
-                        label: ((i % 1) == 0) ? i : `${i - i % 1}${this.slot_rate === 60 ? "" : ":30"}`,
+                        label: label,
                         full: this.isSlotFull(i * 60),
                         selected: false,
                     });
-
+                }
                 return this.slots = a;
             },
             isSlotFull: function (i) {
@@ -307,13 +322,32 @@ if (document.getElementById("sec-reservation")) {
                 this.maxHours = Math.floor(this.getMaxHours());
                 this.rH = this.maxHours < this.rH ? this.maxHours : this.rH;
             },
+            toDetails:function(){
+               if(this.checkReservation()) return;
+               this.section = 2;
+            },
             bookNow:function(){
                 let res = {};
+
+                if(this.checkReservation()||this.checkCustomer()){
+/*
+                    swal({
+                        timer:4000,
+                        type:"error",
+                        toast: true,
+                        html:this.bErrMsg + "<br>"+this.bCErr,
+                        showCancelButton: false,
+                        showConfirmButton: false
+                    });
+*/
+                    return ;
+                }
 
                 res.time = this.slots[this.slot_selected].time;
                 res.duration = this.bDH*60+this.bDM;
                 res.booking_date = moment(this.bDate).add(res.time,"minutes").format(fullFormat);
                 res.no_of_guest = this.bGuests;
+                res.customer = this.bC;
 
                 $.ajax({
                     type: "POST",
@@ -328,6 +362,23 @@ if (document.getElementById("sec-reservation")) {
                         vRes.bErrMsg = err;
                     }
                 });
+            },
+            checkReservation:function(){
+                this.bErrMsg = "";
+                if(this.slot_selected < 0) this.bErrMsg = "Please Select Slot";
+                else if(this.bDH<1) this.bErrMsg = "Reservation Duration should be atleast 1 hour";
+                else if(this.bGuests < 6) this.bErrMsg = "Atleast 6 Guests required";
+
+                return this.bErrMsg;
+            },
+            checkCustomer: function(){
+                this.bCErr = "";
+
+                if(this.bC.name.length < 5) this.bCErr = "Name is required, minimum 5 characters";
+                else if(this.bC.email.length < 6) this.bCErr = "Email is required";
+                else if(this.bC.number.length < 5) this.bCErr = "Phone number is required";
+
+                return this.bCErr;
             }
         },
         watch: {
@@ -402,4 +453,9 @@ $(function () {
             scrollTop: 0
         }, 2000);
     });
+
+});
+
+ $(window).on("load", function() {
+    $('#loading').hide();
 });

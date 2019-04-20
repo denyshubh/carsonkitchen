@@ -59,6 +59,11 @@ body.scroll-start.half .navbar-top.fixed {
     background-repeat: repeat-x;
 }
 
+#foodCarousel{
+    height: 99vh;
+    overflow-y: hidden;
+}
+
 #foodCarouselMob > div{
     background-size: cover;
     background-position: 50% 50%;
@@ -563,8 +568,6 @@ body.scroll-start.half .navbar-top.fixed {
 
 
 #sec-reservation {
-    margin-top: -14vh;
-    margin-bottom: 15vh;
     box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.3);
     background-color: white;
     font-family: 'Roboto', sans-serif;
@@ -574,7 +577,7 @@ body.scroll-start.half .navbar-top.fixed {
     transition: 500ms all;
     color: white;
     background-color: #0b2e13;
-    border-radius: 15%;
+    border-radius: 5px;
 
 }
 
@@ -667,9 +670,6 @@ a, a:visited, a:focus, a:active, a:hover {
     opacity: .5;
 }
 
-
-
-
 /** Menu Page */
 #menu-page {
     background-color: rgba(229,229,229,0.7);
@@ -687,11 +687,9 @@ a, a:visited, a:focus, a:active, a:hover {
     transition: all 1s ease-in-out;
 }
 
-
 .menu-page-head{
     position: relative;
     height: 70vh;
-
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -751,12 +749,10 @@ a, a:visited, a:focus, a:active, a:hover {
     background-image:url('https://images.unsplash.com/photo-1525159831892-59d292d558b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
     position: relative;
     height: 90vh;
-
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
 }
 .reserve-page-head{
     background-image:url('https://images.unsplash.com/photo-1503863627916-deb1706f5b79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
@@ -798,4 +794,79 @@ a, a:visited, a:focus, a:active, a:hover {
     color: #6b3e07;
     padding-top: 10%;
     font-family: "Lobster", cursive;
+}
+
+
+#loading {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: block;
+    background-color: rgba(0,0,0,1);
+    text-align: center;
+    z-index: 999;
+    color: white;
+}
+
+.loader-head{
+    font-family: cursive;
+}
+
+#loading-image {
+    position: absolute;
+    top: 49%;
+    left: 49%;
+    z-index: 1000;
+    color: white;
+}
+
+
+#page_content{
+    background-color: rgba(229,229,229,0.7);
+}
+
+.page-head{
+    position: relative;
+    height: 70vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.page-head-heading h1{
+    color: white;
+    font-size: 400%;
+    font-family: "Raleway", cursive;
+    background: -moz-radial-gradient(center, ellipse cover, rgba(207,207,207,0) 0%, rgba(0,0,0,0.5) 0%, rgba(207,207,207,0) 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(207,207,207,0) 0%, rgba(0,0,0,0.5) 0%, rgba(207,207,207,0) 100%);
+    background: radial-gradient(ellipse at center, rgba(207,207,207,0) 0%, rgba(0,0,0,0.5) 0%, rgba(207,207,207,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfcfcf', endColorstr='#cfcfcf', GradientType=1 );
+}
+@media(max-width:768px) {
+    .page-head-heading h1 {
+        font-size: 2.4rem;
+    }
+}
+.page-head-gradient{
+    height: 100px;
+    background-repeat: repeat-x;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.page-inner{
+    position: relative;
+    margin-top: -25vh;
+    z-index: 105;
+}
+
+.page-container{
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+    z-index: 105;
 }

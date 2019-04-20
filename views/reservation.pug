@@ -1,75 +1,109 @@
 extends layout
 
 block content
-	.container-fluid
-	#page-res.main-container.container-fluid
-		.reserve-page-head.bg-center-cover-nr.py-5
-			.menu-page-head-heading.py-5
-				.container.text-center.py-5
-					h1.text-center.py-2(style="border-top: 1px white solid; border-bottom: 1px white solid;") RESERVE NOW
-			.menu-page-head-gradient(style="background-image:url('img/gradient-white-bottom-black-top.png')")
+	.container-fluid#page_content
+		.container-fluid
+			.page-head.bg-center-cover-nr.py-5(style="background-image:url('https://images.unsplash.com/photo-1503863627916-deb1706f5b79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');")
+				.page-head-heading.py-5
+					.container.text-center.py-5
+						h1.text-center.py-2(style="border-top: 1px white solid; border-bottom: 1px white solid;") RESERVE NOW
+				.page-head-gradient(style="background-image:url('img/gradient-white-bottom-black-top.png')")
+		.container-fluid
+			.container.page-inner.py-5
+				#sec-reservation.container-fluid.page-container.my-2
+					.container-fluid.row.mx-0.p-md-3
+							.col-12.p-3
+								.container-fluid
+									ul.nav.nav-tabs(style="font-weight: bold")
+										li.nav-item
+											span.nav-link(:class="{'active':section===1  }" @click="section=1") Browse
+										li.nav-item
+											span.nav-link(:class="{'active':section===2  }" @click="section=2") Details
+										li.nav-item
+											span.nav-link(:class="{'active':section===3 , 'disabled':section!==3}") Confirmation
+								.container-fluid.mt-3
+									.container-fluid.section-1(v-if="section===1")
+										.container-fluid.m-1.mt-0.pl-3
+											p.m-3(style = "font-family: 'Raleway', sans-serif; font-weight: bold") {{ config.note }}
+										.container-fluid.mt-3.p-2
+											.row.ml-2
+												.col-12.col-md-6.form-group.pl-2.text-center
+													.input-group
+														.input-group-prepend
+															.input-group-text
+																i.fa.fa-calendar-alt
+														input.form-control#date(type="date" v-model="bDate")
+												.col-12.col-md-6.form-group.pl-2.text-center
+													.input-group
+														.input-group-prepend
+															.input-group-text
+																i.fa.fa-users
+														select.form-control#guest(v-model="bGuests")
+															option(:value="g.val" v-for="g in guests" :selected="g.s") {{ g.label }}
 
-		section.mt-5.py-2
-			.container-fluid#sec-reservation
-				.container-fluid.row.mx-0.px-5
-						.col-md-8.p-3
-						.container-fluid
-							ul.nav.nav-tabs(style="font-weight: bold")
-								li.nav-item
-									span.nav-link(:class="{'active':section===1  }" @click="section=1") Browse
-								li.nav-item
-									span.nav-link(:class="{'active':section===2  }" @click="section=2") Details
-								li.nav-item
-									span.nav-link(:class="{'active':section===3 , 'disabled':section!==3}") Confirmation
-						.container-fluid.mt-3
-							.container-fluid.section-1(v-if="section===1")
-								.container-fluid.m-1.mt-0.pl-3
-									p.m-3(style = "font-family: 'Roboto', sans-serif; font-weight: bold") {{ config.note }}
-								.container-fluid.mt-3.p-2
-									.row.ml-2
-										.col-12.col-md-6.form-group.pl-2
-											label(for="date")
-												.input-group
-													.input-group-prepend
-														.input-group-text
-															i.fa.fa-calendar-alt
-													input.form-control#date(type="date" v-model="bDate")
-										.col-12.col-md-6.form-group.pl-2
-											label(for="date")
-												.input-group
-													.input-group-prepend
-														.input-group-text
-															i.fa.fa-users
-													select.form-control#guest(v-model="bGuests")
-														option(:value="g.val" v-for="g in guests" :selected="g.s") {{ g.label }}
-
-								span.d-block.ml-2.text-danger(v-if="bErrMsg.length") {{ bErrMsg }}
-								.container-fluid(v-if="slots.length")
-									.tslotwrapper
-										h5.mb-0 Reservation Hour
-										.tslot.px-2.py-1.my-2.mx-1.d-inline-block(@click="slotClicked(d)" v-for="d in slots" :class="{'full disabled': d.full,'selected' : d.selected }" :disabled="d.full")
-											h6 {{ d.label }} pm
-								.container-fluid.mt-3(v-if="slots.length")
-									h5.mb-2.mr-3.d-inline-block Reservation Duration
-									.container-fluid.p-2
-										.row.container-fluid
-											.col-6.hours
-												.input-group
-													input.form-control(type="number" min="1" :max="maxHours" v-model="rH")
-													.input-group-append
-														.input-group-text Hours
-											.col-6.Mins(v-if="slot_rate <= 30")
-												.input-group
-													input.form-control(type="number" min="0" max="60" :step="getMinutesStep()" v-if="slot_rate <= 30" v-model.lazy="rM" )
-													.input-group-append
-														.input-group-text Mins
-
-								.comtainer-fluid
-									.container-fluid.text-right(@click="bookNow")
-										.btn.btn-primary Book Now
-							.container-fluid.section-1(v-if="section===2")
-								.container-fluid.m-1.mt-0.pl-3
-									| Some details								
-									| Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod rem quisquam fuga, ratione temporibus voluptas accusamus impedit tenetur maxime nulla, quasi repellat quis quas iusto et est quia nostrum at.Dignissimos, quaerat itaque pariatur accusantium dicta eligendi libero fuga corporis explicabo! Magnam nihil et unde doloribus ducimus quam sunt quae molestias error quisquam fuga a voluptates repudiandae assumenda, quo non.Quam laboriosam eveniet dolore iure ullam sed, quis error iusto repellat vero, dolorum, incidunt quibusdam ipsum fugiat praesentium et iste vitae! Placeat illo esse rerum, provident mollitia explicabo facere iusto?Consectetur dolorem at distinctio, suscipit omnis aperiam saepe velit vitae id temporibus molestias. At, fuga magnam cumque, asperiores laborum consectetur commodi totam fugiat sed id voluptatum modi rem quo iste?Nihil, molestiae eum dolor, modi cumque commodi dolorum enim inventore similique odio et tempore ex sapiente voluptates ab id accusantium autem sit? Accusamus sunt nostrum magnam provident non voluptas optio.Totam error, similique velit reprehenderit saepe deserunt eius sed voluptatem culpa sit modi debitis ea quisquam nisi mollitia accusamus vero? Excepturi eum corrupti debitis, accusamus perferendis culpa dolor amet aliquid?Sunt quo eligendi fuga blanditiis architecto sapiente, ad, laboriosam aut iusto libero nisi odio praesentium, vero aperiam consequatur. Aspernatur eius explicabo maxime unde voluptatibus laborum, possimus necessitatibus ipsa ipsum quia!Impedit delectus officiis cupiditate a distinctio, nam minus, qui aspernatur nobis, accusantium saepe? Ab veniam, quibusdam non delectus maiores officiis accusamus explicabo? Magni repudiandae repellat, eius unde ipsa culpa corporis!Perspiciatis qui doloribus assumenda adipisci, esse aspernatur quo quas vero magni distinctio illum veritatis maxime necessitatibus illo nobis minus. Dolor illum sunt possimus similique omnis, nesciunt sequi fugiat magnam veniam.Sint consequuntur impedit odit error sed modi odio ab officiis saepe amet provident inventore quaerat nihil, illum velit fugit, recusandae eum ut aperiam nam. Soluta reprehenderit corporis saepe nisi odit. 
-
-
+										span.d-block.ml-2.text-danger(v-if="bErrMsg.length") {{ bErrMsg }}
+										.container-fluid(v-if="slots.length")
+											.tslotwrapper
+												h5.mb-0 Reservation Hour
+												.tslot.px-2.py-1.my-2.mx-1.d-inline-block(@click="slotClicked(d)" v-for="d in slots" :class="{'full disabled': d.full,'selected' : d.selected }" :disabled="d.full")
+													span.px-2.text-uppercase {{ d.label }}
+										.container-fluid.mt-3(v-if="slots.length")
+											h5.mb-2.mr-3.d-inline-block Reservation Duration
+											.container-fluid.p-2
+												.row.container-fluid
+													.col-6.hours
+														.input-group
+															input.form-control(type="number" min="1" :max="maxHours" v-model="rH")
+															.input-group-append
+																.input-group-text Hours
+													.col-6.Mins(v-if="slot_rate <= 30")
+														.input-group
+															input.form-control(type="number" min="0" max="60" :step="getMinutesStep()" v-if="slot_rate <= 30" v-model.lazy="rM" )
+															.input-group-append
+																.input-group-text Mins
+										.container-fluid(v-if="bErrMsg.length")
+											.container
+												.text-danger {{ bErrMSg }}
+										.container-fluid.mt-5
+											.container-fluid.text-right(@click="toDetails")
+												.btn.btn-primary Next
+									.container-fluid.section-1(v-if="section===2")
+										.container-fluid.m-1.mt-0.row
+											.col-md-6
+												.form-group
+													.input-group
+														.input-group-prepend
+															.input-group-text
+																i.fa.fa-user
+														input.form-control(v-model="bC.name", placeholder='Full Name',  type='text')
+												.form-group
+													.input-group
+														.input-group-prepend
+															.input-group-text
+																i.fa.fa-envelope
+														input.form-control(v-model="bC.email" placeholder='Email', type='text')
+												.form-group
+													.input-group
+														.input-group-prepend
+															.input-group-text
+																i.fa.fa-phone.fa-rotate-90
+														input.form-control(v-model="bC.number", placeholder='Phone Number', type='text')
+											.col-md-6
+												.form-group
+													.input-group
+														.input-group-prepend
+															.input-group-text
+																i.fa.fa-info
+														input.form-control(v-model="bC.purpose", placeholder='Purpose', type='text')
+												.form-group
+													.input-group
+														.input-group-prepend
+															.input-group-text
+																i.fa.fa-question
+														textarea.form-control(v-model="bC.extra", placeholder='Extra requirements? or any thing', )
+										.container-fluid(v-if="bCErr.length")
+											.container
+												.text-danger {{ bCErr }}
+										.container-fluid.mt-5
+											.container-fluid.text-right(@click="bookNow")
+												.btn.btn-primary Book Now
