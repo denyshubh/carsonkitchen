@@ -826,8 +826,5 @@ a, a:visited, a:focus, a:active, a:hover {
   }
 
   
-.division-text {
-    color: #6b3e07;
-    padding-top: 10%;
-    font-family: "Lobster", cursive;
-}
+  .grid-item { width: 200px; }
+  .grid-item--width2 { width: 400px; }
