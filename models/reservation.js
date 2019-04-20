@@ -19,22 +19,14 @@ const Reservation =mongoose.model('Reservation', new mongoose.Schema({
         type: Number,
         required: true
     },
-    purpose:{
-        type: String,
-        default:'Other'
-    },
     booked_on :{
         type: Date,
         default: Date.now(),
     },
-    customer_id:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        // required:true,
-        // unique: true
+    customer:{
+       type: Object,
+       required: true
     }
-
-  
   }));
 
 
@@ -44,9 +36,9 @@ function validateReservation(reservation) {
         time:Joi.string().required(),
         duration:Joi.number().required(),
         no_of_guest:Joi.number().required(),
-        purpose:Joi.string(),
         booked_on :Joi.date(),
-        customer_id:Joi.string()
+        customer:Joi.required(),
+
     };
   
     return Joi.validate(reservation, schema);
