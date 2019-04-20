@@ -1,3 +1,7 @@
+body{
+    overflow-x: hidden!important;
+    width:100vw!important;
+}
 .container-fluid {
     padding: 0;
 }
@@ -289,22 +293,19 @@ body.scroll-start.half .navbar-top.fixed {
 
     .menu-circle{
         position: absolute;
-        top: 300px;
-        left: 50%;
+        top: 280px;
+        left: 35%;
         z-index: 625;
-    }
-    .menu-circle .rollover{
-        position: absolute;
-        border-radius: 50%;
-
+        height:150px;
+        width:150px
     }
 
-    .menu-circle .rollover .roundbtn{
+    .menu-circle .roundbtn{
         opacity: 1;
         transform: scale(1);
     }
 
-    .menu-circle .rollover:hover .roundbtn{
+    .menu-circle:hover .roundbtn{
         transform: scale(1.2);
         cursor: pointer;
     }

@@ -103,6 +103,7 @@ if (document.getElementById("menu_cat_modal")) {
             let data_id = $(this).closest('.section-table .rollover').attr('data-id');
             cat_box.boxToggle();
         });
+
     });
 
     $('.menu_cat_trigger').on('click', function () {
