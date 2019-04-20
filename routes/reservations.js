@@ -32,7 +32,6 @@ router.get('/d', async (req,res)=>{
         .find({booking_date : req.query.date})
         .sort('time');
 
-    console.log(reservation);
     res.json(reservation);
 });
 
