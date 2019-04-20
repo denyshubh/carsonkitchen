@@ -4,7 +4,8 @@ const router =  express.Router();
 
 router.post('/', async (req,res) => {
 
-    const { error } = validate(req.body); 
+
+    const { error } = validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
     let reservation = new Reservation({
@@ -19,7 +20,7 @@ router.post('/', async (req,res) => {
 
     reservation = await reservation.save();
     res.send(reservation);
-  
+
 });
 
 router.get('/d', async (req,res)=>{

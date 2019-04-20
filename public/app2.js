@@ -192,6 +192,7 @@ if (document.getElementById("sec-reservation")) {
             slots: [], guests:[],
             slot_selected: -1,
             dM: 0, dH: 0,
+            minDate: moment().format(dateFormat),
             maxH: 24,
             slot_rate: 30,
             config: {
@@ -388,6 +389,11 @@ if (document.getElementById("sec-reservation")) {
                     "date": vRes.bDate
                 };
                 this.bookings = null;
+
+                if(moment(this.bDate).isBefore(this.minDate)) {
+                    this.bDate = this.minDate;
+                    return;
+                }
 
                 $.ajax({
                     type: "GET",
