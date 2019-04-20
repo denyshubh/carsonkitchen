@@ -24,7 +24,7 @@ router.get('/about', (req,res) => {
     res.send('Error 404, Psge Not Found ');
 });
 router.get('/gift', (req,res) => {
-    res.send('Error 404, Psge Not Found ');
+    res.render('gift');
 });
 router.get('/location', (req,res) => {
     res.send('Error 404, Psge Not Found ');
