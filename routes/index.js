@@ -1,9 +1,6 @@
 
 const express = require('express');
 const router =  express.Router();
-const jwt = require('jsonwebtoken');
-const Category = require('../models/category');
-
 
 router.get('/', (req,res) => {
     res.render('index');
@@ -21,13 +18,13 @@ router.get('/group', (req,res) => {
     res.render('groupDining');
 });
 router.get('/about', (req,res) => {
-    res.send('Error 404, Psge Not Found ');
+    res.render('about');
 });
 router.get('/gift', (req,res) => {
-    res.send('Error 404, Psge Not Found ');
+    res.render('gift');
 });
 router.get('/location', (req,res) => {
-    res.send('Error 404, Psge Not Found ');
+    res.render('location');
 });
 
 

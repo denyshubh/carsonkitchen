@@ -753,9 +753,21 @@ a, a:visited, a:focus, a:active, a:hover {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
 }
 .reserve-page-head{
     background-image:url('https://images.unsplash.com/photo-1503863627916-deb1706f5b79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');
+    position: relative;
+    height: 80vh;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.location-page-head{
+    background-image: url('https://images.unsplash.com/photo-1531266752426-aad472b7bbf4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
     position: relative;
     height: 80vh;
 
@@ -870,3 +882,6 @@ a, a:visited, a:focus, a:active, a:hover {
     box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
     z-index: 105;
 }
+
+  .grid-item { width: 200px; }
+  .grid-item--width2 { width: 400px; }

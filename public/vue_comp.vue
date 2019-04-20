@@ -17,7 +17,7 @@
     background-color: blueviolet;
 ">
             <div class="logo">
-                <h1>Carson Kitchen</h1>
+                <h1>Carssars Kitchen</h1>
             </div>
             <div class="login-box">
                 <form class="login-form" action="/api/auth" method="post">
