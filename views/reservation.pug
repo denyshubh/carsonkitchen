@@ -1,25 +1,22 @@
 extends layout
 
 block content
+	.container-fluid
 	#page-res.main-container.container-fluid
-		section.page-title.page-title-4.pt-5.bg-info(style="height:50vh")
-			.container.mt-5
-				.row
-					.col-md-6.text-center
-						h1.uppercase.mb0.font-white
-							| Reserve
-							strong  Now
-		section
+		.reserve-page-head.bg-center-cover-nr.py-5
+			.menu-page-head-heading.py-5
+				.container.text-center.py-5
+					h1.text-center.py-2(style="border-top: 1px white solid; border-bottom: 1px white solid;") RESERVE NOW
+			.menu-page-head-gradient(style="background-image:url('img/gradient-white-bottom-black-top.png')")
+
+		section.mt-5.py-2
 			.container-fluid#sec-reservation
-				.container-fluid.row.mx-0.px-0
-					.col-md-6.mx-0.px-0
+				.container-fluid.row.mx-0.px-5
+						.col-md-8.p-3
 						.container-fluid
-							div.background-image-holder.fadeIn(style="background:url('img/res_extra.jpg')")
-					.col-md-6.p-3
-						.container-fluid
-							ul.nav.nav-tabs
+							ul.nav.nav-tabs(style="font-weight: bold")
 								li.nav-item
-									span.nav-link(:class="{'active':section===1  }") Browse
+									span.nav-link(:class="{'active':section===1  }" @click="section=1") Browse
 								li.nav-item
 									span.nav-link(:class="{'active':section===2  }" @click="section=2") Details
 								li.nav-item
@@ -27,18 +24,17 @@ block content
 						.container-fluid.mt-3
 							.container-fluid.section-1(v-if="section===1")
 								.container-fluid.m-1.mt-0.pl-3
-									p.ml-3 {{ config.note }}
-								hr.m-2
-								.container-fluid
+									p.m-3(style = "font-family: 'Roboto', sans-serif; font-weight: bold") {{ config.note }}
+								.container-fluid.mt-3.p-2
 									.row.ml-2
-										.col-6.form-group.pl-2
+										.col-12.col-md-6.form-group.pl-2
 											label(for="date")
 												.input-group
 													.input-group-prepend
 														.input-group-text
 															i.fa.fa-calendar-alt
 													input.form-control#date(type="date" v-model="bDate")
-										.col-6
+										.col-12.col-md-6.form-group.pl-2
 											label(for="date")
 												.input-group
 													.input-group-prepend
