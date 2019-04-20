@@ -1,3 +1,4 @@
+
 body {
     width: auto! important;
     overflow-x: hidden! important;
@@ -296,19 +297,15 @@ body.scroll-start.half .navbar-top.fixed {
         top: 300px;
         left: 50%;
         z-index: 625;
-    }
-    .menu-circle .rollover{
-        position: absolute;
         border-radius: 50%;
-
     }
 
-    .menu-circle .rollover .roundbtn{
+    .menu-circle  .roundbtn{
         opacity: 1;
         transform: scale(1);
     }
 
-    .menu-circle .rollover:hover .roundbtn{
+    .menu-circle:hover .roundbtn{
         transform: scale(1.2);
         cursor: pointer;
     }
