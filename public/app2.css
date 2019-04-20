@@ -1,6 +1,6 @@
-body{
-    overflow-x: hidden!important;
-    width:100vw!important;
+body {
+    width: auto! important;
+    overflow-x: hidden! important;
 }
 .container-fluid {
     padding: 0;
@@ -293,14 +293,13 @@ body.scroll-start.half .navbar-top.fixed {
 
     .menu-circle{
         position: absolute;
-        top: 280px;
-        left: 35%;
+        top: 300px;
+        left: 50%;
         z-index: 625;
-        height:150px;
-        width:150px
+        border-radius: 50%;
     }
 
-    .menu-circle .roundbtn{
+    .menu-circle  .roundbtn{
         opacity: 1;
         transform: scale(1);
     }
