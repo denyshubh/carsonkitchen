@@ -19,10 +19,10 @@ app.locals.basedir = app.get('views');
 
 
 
-// require('./starter/logging')();
+require('./starter/logging')();
 require('./starter/routes')(app);
 require('./starter/db')();
-// require('./startup/config')();
+require('./starter/prod')(app); 
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => winston.info(`Listening on port ${port}...`));

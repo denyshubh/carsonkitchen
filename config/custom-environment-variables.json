@@ -1,3 +1,4 @@
 {
-    "jwtPrivateKey": "ck_jwtPrivateKey"
+    "jwtPrivateKey": "ck_jwtPrivateKey",
+    "db": "ck_db"
   }

@@ -1,4 +1,5 @@
 {
   "jwtPrivateKey": "",
-  "db": "mongodb+srv://shubham:Denyshubham@carsonkitchen-wmyit.mongodb.net/carsonkitchen?retryWrites=true"
+  "db": "mongodb://localhost/carssarsKitchen"
 }
+
