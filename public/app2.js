@@ -357,7 +357,7 @@ if (document.getElementById("sec-reservation")) {
                     data: res,
                     dataType: "text",
                     success: function (res) {
-                        console.log(res);
+                        window.location = '/reservation';
                     },
                     error: function (res, err) {
                         console.log(err);
@@ -466,3 +466,4 @@ $(function () {
  $(window).on("load", function() {
     $('#loading').hide();
 });
+

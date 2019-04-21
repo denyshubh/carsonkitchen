@@ -884,5 +884,72 @@ a, a:visited, a:focus, a:active, a:hover {
     z-index: 105;
 }
 
-  .grid-item { width: 200px; }
-  .grid-item--width2 { width: 400px; }
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+  .row-gallery {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    padding: 0 4px;
+  }
+  
+  /* Create four equal columns that sits next to each other */
+  .column {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+  }
+  
+  .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+  }
+  
+  /* Responsive layout - makes a two column-layout instead of four columns */
+  @media screen and (max-width: 800px) {
+    .column {
+      -ms-flex: 50%;
+      flex: 50%;
+      max-width: 50%;
+    }
+  }
+  .zoom {
+    transition: transform 0.8s;
+   }
+   .zoom:hover { 
+    transform: scale(2); 
+    transition-delay: 0.5s
+}
+  
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column {
+      -ms-flex: 100%;
+      flex: 100%;
+      max-width: 100%;
+    }
+    .zoom:hover{
+        transform: scale(1.0);
+    }
+  }
+
+  .content-heading{
+    font-family: "Lobster", cursive;
+  }
+  @media(max-width:768px) {
+    .content-heading {
+        font-family: "Roboto";
+        font-size:1.3rem; 
+  }
+    .content-body {
+        font-size:1.0rem; 
+    }
+    
+}
+  

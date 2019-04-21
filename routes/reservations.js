@@ -24,10 +24,6 @@ router.post('/', async (req,res) => {
 });
 
 router.get('/d', async (req,res)=>{
-    
-
-    console.log(req.query);
-
     const reservation = await Reservation
         .find({booking_date : req.query.date})
         .sort('time');

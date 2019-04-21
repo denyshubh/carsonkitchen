@@ -1,11 +1,33 @@
 extends layout
 
 block content
-    .container-fluid
-        .about-page-head.bg-center-cover-nr.py-5
-            .menu-page-head-heading.py-5
-                .container.text-center.py-5
-                    h1.text-center.py-2(style="border-top: 1px white solid; border-bottom: 1px white solid;") Carssars Kitchen
-            .menu-page-head-gradient(style="background-image:url('img/gradient-white-bottom-black-top.png')")
-    .container
-        include blocks/gallery
+    .container-fluid#page_content
+        .container-fluid.mb-5
+            .page-head.bg-center-cover-nr.py-5(style="background-image:url(' https://images.unsplash.com/photo-1541167113378-1f06d813887f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80 https://images.unsplash.com/photo-1541167113378-1f06d813887f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80');")
+                .page-head-heading.py-5
+                    .container.text-center.py-5
+                        h1.text-center.py-2(style="border-top: 1px white solid; border-bottom: 1px white solid;") Know Us
+                .page-head-gradient(style="background-image:url('img/gradient-white-bottom-black-top.png')")
+        .container-fluid
+            .container.page-inner.py-5
+                #group-page-text.page-container.align-center.mx-5.p-5
+                        .row.mb64.mb-xs-24
+                            .col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1
+                                h3.uppercase.mb16.content-heading Urban Neighborhood Dining
+                                h6.mb8.uppercase Downtown Las Vegas
+                                br
+                                p.lead.content-body Opening in 2014, Carson Kitchen was the creation of Las Vegas' hometown favorite Chef Kerry Simon and restaurateur Cory Harwell. The plan, to develop the first urban casual eatery, inside the re-purposed mid-century John E. Carson Hotel - a skeleton of Downtown Las Vegas' yesteryears, now home to its eclectic mix of tenants including a sushi bar, tattoo parlor, pilates studio, creative agencies, donut & coffee bar and Chef Simon's playful interpretations on American comfort food.
+                                p.lead.content-body The renovated space, showcased by hand-crafted solid butcher block countertops throughout, provides multiple atmospheres to indulge including a swanky bar, the open kitchen expo counter, a community table and the outdoor rooftop patio and bar - yes, that's two bars to choose from. Guests can also take in a cocktail and relax in the now preserved 1950's hotel courtyard, fully outfitted with a lava rock fire pit.
+                                p.lead.content-body If you're looking for an alternative to The Strip's offerings and simply want to get back to basics of creative comfort, Carson Kitchen will bring you back to a time when your grandparents visited Las Vegas.
+                                h4
+                                    a.m-2(href='#')
+                                        i.fab.fa-facebook-square.text-primary(aria-hidden="true")
+                                    a.m-2(href='#')
+                                        i.fab.fa-twitter-square.text-info(aria-hidden="true")
+                                    a.m-2(href='#')
+                                        i.fab.fa-instagram.text-danger(aria-hidden="true")
+                            .col-12.col-md-4
+                                img.img-fluid.d-none.d-md-block(src="img/tomates-cerise.png")
+        .container.mt-5
+            include blocks/gallery
+
