@@ -1,0 +1,14 @@
+[Unit]
+Description=Restaurant Website Demo
+Documentation=https://example.com
+After=network.target
+
+[Service]
+Environment=NODE_PORT=3000
+Type=simple
+User=ubuntu
+ExecStart=/usr/bin/node /home/ubuntu/carsonkitchen/app.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
