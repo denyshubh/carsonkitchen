@@ -66,7 +66,7 @@ if (document.getElementById("menu_cat_modal")) {
                 return "background-image:url('" + img + "')";
             },
             getImg: function (category) {
-                return "http://192.168.43.244:3000" + category;
+                return "http://127.0.0.1:8080" + category;
             },
             onLeftClick: function () {
                 this.i = (this.i === 0) ? this.categories.length - 1 : this.i - 1;

@@ -1,5 +1,5 @@
 {
-  "jwtPrivateKey": "",
+  "jwtPrivateKey": "secret",
   "db": "mongodb://localhost/carssarsKitchen"
 }
 
