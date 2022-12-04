@@ -21,18 +21,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.get('/:id', async (req, res) => {
-  const menu = await Menu.findById(req.params.id);
-  if (!menu) return res.status(404).send('The menu with the given ID was not found.');
-  Category.getCategories((err, categories) => {
-    if(IsAdmin(req))
-    res.render('edit-menu',{
-      menu:menu,
-      category:categories
-    });
-});
 
-});
 
 function IsAdmin(req)
 {
